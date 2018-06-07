@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="博客," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="利用七牛云提供的免费空间部署 hexo 博客。因为很多同学不会用github来着，所以就用国内的空间提供商七牛来搭建hexo博客———部分内容转载于实验楼一点自己的体会理解 hexo  hexo 是一个快速、简洁且高效的博客框架。hexo 使用  Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。   静态内容本身由一些文件组成，并不需要动态的读写数据库。因此将">
+<meta name="keywords" content="博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不會用git也沒關係，使用七牛云+hexo">
+<meta property="og:url" content="http://yoursite.com/2017/07/25/七牛云搭建博客/index.html">
+<meta property="og:site_name" content="啊直直直直">
+<meta property="og:description" content="利用七牛云提供的免费空间部署 hexo 博客。因为很多同学不会用github来着，所以就用国内的空间提供商七牛来搭建hexo博客———部分内容转载于实验楼一点自己的体会理解 hexo  hexo 是一个快速、简洁且高效的博客框架。hexo 使用  Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。   静态内容本身由一些文件组成，并不需要动态的读写数据库。因此将">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2017/07/25/七牛云搭建博客/qiniu1.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/25/七牛云搭建博客/qiniu2.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/25/七牛云搭建博客/qiniu3.png">
+<meta property="og:image" content="http://yoursite.com/2017/07/25/七牛云搭建博客/qiniu4.png">
+<meta property="og:updated_time" content="2017-07-25T06:21:28.267Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不會用git也沒關係，使用七牛云+hexo">
+<meta name="twitter:description" content="利用七牛云提供的免费空间部署 hexo 博客。因为很多同学不会用github来着，所以就用国内的空间提供商七牛来搭建hexo博客———部分内容转载于实验楼一点自己的体会理解 hexo  hexo 是一个快速、简洁且高效的博客框架。hexo 使用  Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。   静态内容本身由一些文件组成，并不需要动态的读写数据库。因此将">
+<meta name="twitter:image" content="http://yoursite.com/2017/07/25/七牛云搭建博客/qiniu1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/25/七牛云搭建博客/"/>
+
+
+
+
+
+  <title>不會用git也沒關係，使用七牛云+hexo | 啊直直直直</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">啊直直直直</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">多些不为什么的坚持</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/25/七牛云搭建博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿直">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://otjagab27.bkt.clouddn.com/%E5%A4%B4%E5%83%8F.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啊直直直直">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">不會用git也沒關係，使用七牛云+hexo</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-25T12:57:40+08:00">
+                2017-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/07/25/七牛云搭建博客/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/07/25/七牛云搭建博客/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="利用七牛云提供的免费空间部署-hexo-博客。"><a href="#利用七牛云提供的免费空间部署-hexo-博客。" class="headerlink" title="利用七牛云提供的免费空间部署 hexo 博客。"></a>利用七牛云提供的免费空间部署 hexo 博客。</h1><p>因为很多同学不会用github来着，所以就用国内的空间提供商七牛来搭建hexo博客<br>———部分内容转载于<a href="https://www.shiyanlou.com/" target="_blank" rel="external">实验楼</a><br>一点自己的体会理解</p>
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><blockquote>
+<ul>
+<li><code>hexo</code> 是一个快速、简洁且高效的博客框架。<code>hexo</code> 使用  <code>Markdown</code>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</li>
+</ul>
+</blockquote>
+<p>静态内容本身由一些文件组成，并不需要动态的读写数据库。因此将它存储在云端，是非常好的选择。</p>
+<h2 id="七牛云"><a href="#七牛云" class="headerlink" title="七牛云"></a>七牛云</h2><p>七牛云存储提供免费的存储空间 10GB，每月下载流量 10GB，每月 PUT/DELETE 10 万次请求，每月 GET 100 万次请求。<br><a id="more"></a><br>另外，七牛在国内以及海外有多个 CDN，将博客部署到七牛的好处是显而易见的。由于国内环境，七牛自定义域名需要已备案域名才能使用。现在七牛的空间已经取消了二级域名，给出的是五级域名。如果你有已备案域名，那么部署到七牛是个极好的选择，或者你不介意五级域名的话也可以。</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p><code>node.js</code> 的编译安装<br><code>hexo</code> 的配置<br><code>markdown</code> 语法</p>
+<h1 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h1><h2 id="可以翻翻以前博客，有提到过的-node-js的安装-hexo的安装"><a href="#可以翻翻以前博客，有提到过的-node-js的安装-hexo的安装" class="headerlink" title="可以翻翻以前博客，有提到过的 node.js的安装 hexo的安装"></a>可以翻翻以前博客，有提到过的 node.js的安装 hexo的安装</h2><h2 id="再有就是qrbox的安装"><a href="#再有就是qrbox的安装" class="headerlink" title="再有就是qrbox的安装"></a>再有就是qrbox的安装</h2><h2 id="七牛云账户：需要在个人中心获取-AccessKey-和-SecretKey。"><a href="#七牛云账户：需要在个人中心获取-AccessKey-和-SecretKey。" class="headerlink" title="七牛云账户：需要在个人中心获取 AccessKey 和 SecretKey。"></a>七牛云账户：需要在个人中心获取 <code>AccessKey</code> 和 <code>SecretKey</code>。</h2><h2 id="备案过的域名（可选）"><a href="#备案过的域名（可选）" class="headerlink" title="备案过的域名（可选）"></a>备案过的域名（可选）</h2><h2 id="七牛云平台余额有10元（可选）"><a href="#七牛云平台余额有10元（可选）" class="headerlink" title="七牛云平台余额有10元（可选）"></a>七牛云平台余额有10元（可选）</h2><h1 id="安装操作（就复杂点的吧）"><a href="#安装操作（就复杂点的吧）" class="headerlink" title="安装操作（就复杂点的吧）"></a>安装操作（就复杂点的吧）</h1><h2 id="创建一个blog文件夹用来放置-hexo"><a href="#创建一个blog文件夹用来放置-hexo" class="headerlink" title="创建一个blog文件夹用来放置 hexo"></a>创建一个blog文件夹用来放置 hexo</h2><p>在blog里面启用gitbash(上一篇环境搭建里面说过关于git的安装和使用)</p>
+<h2 id="3-2-下载node-js"><a href="#3-2-下载node-js" class="headerlink" title="3.2 下载node.js"></a>3.2 下载node.js</h2><p>直接从官网下载 <code>node.js</code>:<a href="https://nodejs.org/en/" target="_blank" rel="external">node下载</a>安装好之后检查<br>键盘上操作<code>win+R</code>输入cmd，在控制台模式下输入node -v查看版本号</p>
+<h2 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 <code>hexo</code></h2><p>在blog目录下鼠标右键进入git bash命令行模式 输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<p>如果网络不好的话，可能要等待很久。<br>执行命令初始化 hexo 博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
+<p>安装一下 npm 依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install</div></pre></td></tr></table></figure>
+<p>生成静态文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div></pre></td></tr></table></figure>
+<p>本地预览</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<p>然后就可以在本地的浏览器地址栏输入 localhost:4000 来查看啦啦啦啦啦</p>
+<h1 id="使用七牛云平台"><a href="#使用七牛云平台" class="headerlink" title="使用七牛云平台"></a>使用七牛云平台</h1><h2 id="在七牛云官网（http-www-qiniu-com-）注册一个账户。"><a href="#在七牛云官网（http-www-qiniu-com-）注册一个账户。" class="headerlink" title="在七牛云官网（http://www.qiniu.com/）注册一个账户。"></a>在七牛云官网（<a href="http://www.qiniu.com/）注册一个账户。" target="_blank" rel="external">http://www.qiniu.com/）注册一个账户。</a></h2><p>然后在个人中心，创建一个空间用于存放 hexo 博客的静态文件。</p>
+<p><img src="/2017/07/25/七牛云搭建博客/qiniu1.png" alt=""><br><img src="/2017/07/25/七牛云搭建博客/qiniu2.png" alt=""><br>然后在个人面板-&gt;密钥管理，获取AccessKey 和 SecretKey。</p>
+<h2 id="安装qrsbox"><a href="#安装qrsbox" class="headerlink" title="安装qrsbox"></a>安装<code>qrsbox</code></h2><p>从七牛官方下载 <code>qrsbox</code> 软件：<code>http://developer.qiniu.com/code/v6/tool/qrsbox.html</code>。</p>
+<p>配置 <code>qrsbox</code>:</p>
+<p>下载 <code>qrsbox</code> 命令行工具后，对获得的可执行 <code>.bin</code> 文件重命名为 <code>qrsboxcli</code>：</p>
+<p>之后在该目录下右键打开 gitbash 终端，执行以下命令进行初始化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./qrsboxcli init &lt;AccessKey&gt; &lt;SecretKey&gt; &lt;SyncDir&gt; &lt;Bucket&gt; [&lt;KeyPrefix&gt;]</div></pre></td></tr></table></figure></p>
+<p>此时如果 <code>qrsboxcli</code> 无法执行，可以使用 <code>$ sudo chmod +x qrsboxcli</code> 命令，赋予执行权限。</p>
+<blockquote>
+<ul>
+<li>参数名称     说明</li>
+<li>SyncDir     本地的同步目录，该目录下的文件会随时同步上传至七牛云存储</li>
+<li>Bucket     保存同步文件的资源空间名</li>
+<li>KeyPrefix     文件前缀，可选。如果设置了该参数，那么上传的文件名前都会加上前缀。这个前缀主要用于在空间</li>
+<li>中区分不同上传来源的文件</li>
+</ul>
+</blockquote>
+<p>例如，此时的本地同步目录就是之前我们创建的 <code>/blog/public/</code>。<br>最后，用户可以使用以下命令开始文件同步：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./qrsboxcli sync &amp;</div></pre></td></tr></table></figure></p>
+<p>这里使用了 &amp; 符号，让同步客户端进程运行在后台。如果退出终端后程序中断，请使用以下命令代替：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nohup ./qrsboxcli sync &gt;/dev/null 2&gt;&amp;1 &amp;</div></pre></td></tr></table></figure></p>
+<p>用户可以通过以下命令查看同步过程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./qrsboxcli log</div></pre></td></tr></table></figure></p>
+<p>如果需要停止后台运行的 qrsboxcli，可以使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./qrsboxcli stop</div></pre></td></tr></table></figure>
+<p>如果希望改变同步目录、bucket 等运行参数，需要先用 stop 命令停止 qrsboxcli 的后台程序，重新用新的参数运行初始化命令，然后再次启动同步程序，qrsboxcli 会立刻按新的配置将新目录的文件同步至七牛云存储。<br>注意 ：一定要记得在七牛云-&gt;个人中心-&gt;空间设置里面把默认首页设置开启：</p>
+<p><img src="/2017/07/25/七牛云搭建博客/qiniu3.png" alt=""><br><img src="/2017/07/25/七牛云搭建博客/qiniu4.png" alt=""></p>
+<h1 id="配置-hexo"><a href="#配置-hexo" class="headerlink" title="配置 hexo"></a>配置 <code>hexo</code></h1><h2 id="hexo-目录"><a href="#hexo-目录" class="headerlink" title="hexo 目录"></a>hexo 目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">├── _config.yml   //网站的 配置 信息，您可以在此配置大部分的参数。</div><div class="line">|—— public       //生成的静态文件</div><div class="line">├── package.json</div><div class="line">├── scaffolds    //模版 文件夹。当您新建文章时，hexo 会根据 scaffold 来建立文件。</div><div class="line">├── source       //资源文件夹是存放用户资源的地方。</div><div class="line">|   ├── _drafts</div><div class="line">|   └── _posts</div><div class="line">└── themes       //主题 文件夹，hexo 会根据主题来生成静态页面</div></pre></td></tr></table></figure>
+<p>编辑 _config.yml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"># Hexo Configuration</div><div class="line">## Docs: http://hexo.io/docs/configuration.html</div><div class="line">## Source: https://github.com/hexojs/hexo/</div><div class="line"># Site </div><div class="line">title: HEXO #站点名，站点左上角</div><div class="line">subtitle: 一个博客。 #副标题，站点左上角</div><div class="line">description: hexo #给搜索引擎看的，对站点的描述，可以自定义</div><div class="line">author: shiyanlolu #默认在站点左下角可以看到</div><div class="line">email: shiyanlou@qq.com #邮箱</div><div class="line">language: zh-Hans #语言包设置。</div><div class="line"></div><div class="line"># URL #访问地址等信息设置，可根据需要自己修改。</div><div class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</div><div class="line">url: http:/shiyanlou.com #访问域名，可以修改为你的七牛云空间域名</div><div class="line">root: /</div><div class="line">permalink: :year/:month/:day/:title/ #具体内容页的存储路径结构</div><div class="line">tag_dir: tags #标签目录名</div><div class="line">archive_dir: archives #归档目录名</div><div class="line">category_dir: categories #分类目录名</div><div class="line"># Directory #默认文章和生成目录设置</div><div class="line">source_dir: source</div><div class="line">public_dir: public</div><div class="line"># Writing 文章布局、写作格式的定义</div><div class="line">new_post_name: :title.md # File name of new posts</div><div class="line">default_layout: post</div><div class="line">auto_spacing: false # Add spaces between asian characters and western characters</div><div class="line">titlecase: false # Transform title into titlecase</div><div class="line">max_open_file: 100</div><div class="line">filename_case: 0</div><div class="line">highlight:</div><div class="line">  enable: true</div><div class="line">  backtick_code_block: true</div><div class="line">  line_number: true</div><div class="line">  tab_replace:</div><div class="line"># Category &amp; Tag 分类和标签设置</div><div class="line">default_category: uncategorized</div><div class="line">category_map:</div><div class="line">tag_map:</div><div class="line"># Date / Time format 日期格式</div><div class="line">## Hexo uses Moment.js to parse and display date</div><div class="line">## You can customize the date format as defined in</div><div class="line">## http://momentjs.com/docs/#/displaying/format/</div><div class="line">date_format: MMM D YYYY</div><div class="line">time_format: H:mm:ss</div><div class="line"># Pagination 每页显示文章数，可以自定义</div><div class="line">## Set per_page to 0 to disable pagination</div><div class="line">per_page: 5</div><div class="line">pagination_dir: page</div><div class="line"></div><div class="line"># Extensions 这里配置站点所用主题和插件</div><div class="line">## Plugins: https://github.com/hexojs/hexo/wiki/Plugins</div><div class="line">## Themes: https://github.com/hexojs/hexo/wiki/Themes</div><div class="line">theme: landscape</div></pre></td></tr></table></figure></p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo n &quot;我的博客&quot; == hexo new &quot;我的博客&quot; #新建文章</div><div class="line">hexo g == hexo generate  #生成博客</div><div class="line">hexo s == hexo server    #启动服务预览</div></pre></td></tr></table></figure>
+<p>执行 <code>hexo n &quot;blog name&quot;</code> 命令创建一篇文章后，使用 <code>hexo g</code> 命令生成静态文件到 <code>public</code> 目录下，之前配置好的 <code>qrsbox</code> 会自动把新的文件上传到七牛云的空间。</p>
+<h2 id="Next-主题"><a href="#Next-主题" class="headerlink" title="Next 主题"></a>Next 主题</h2><p>使用 Next 主题让站点更酷炫，Next 是一款简约而不简单的 hexo 主题，功能特性多样；响应式设计，电脑手机访问体验好。</p>
+<blockquote>
+<ul>
+<li><p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd shiyanlou_hexo</div><div class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+</li>
+<li><p>开启</p>
+</li>
+</ul>
+</blockquote>
+<p>需要修改 <code>/shiyanlou_hexo/_config.yml</code> 配置项 <code>theme</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: http://hexo.io/plugins/</div><div class="line">## Themes: http://hexo.io/themes/</div><div class="line">theme: next</div></pre></td></tr></table></figure></p>
+<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">Next 官网</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>主要是如何在七牛云上部署<code>hexo</code>博客，主要就是一些配置工作，可以在博客里面写写生活的感悟，也是也是不错的选择。寻找一个良好的markdown对博客的书写也是有着很大的帮助。祝大家学习生活愉快。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的打赏是对我最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://otjagab27.bkt.clouddn.com/hexo2.png" alt="阿直 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://otjagab27.bkt.clouddn.com/money.png" alt="阿直 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/博客/" rel="tag"># 博客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/24/程序员的骚话/" rel="next" title="echo "like"">
+                <i class="fa fa-chevron-left"></i> echo "like"
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/29/canvas实现动态时钟/" rel="prev" title="canvas实现动态时钟">
+                canvas实现动态时钟 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://otjagab27.bkt.clouddn.com/%E5%A4%B4%E5%83%8F.jpg"
+               alt="阿直" />
+          <p class="site-author-name" itemprop="name">阿直</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个分享秘密的后花园</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/azhizhizhizhizhi" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用七牛云提供的免费空间部署-hexo-博客。"><span class="nav-number">1.</span> <span class="nav-text">利用七牛云提供的免费空间部署 hexo 博客。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo"><span class="nav-number">1.1.</span> <span class="nav-text">hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七牛云"><span class="nav-number">1.2.</span> <span class="nav-text">七牛云</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点"><span class="nav-number">1.3.</span> <span class="nav-text">知识点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境要求"><span class="nav-number">2.</span> <span class="nav-text">环境要求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可以翻翻以前博客，有提到过的-node-js的安装-hexo的安装"><span class="nav-number">2.1.</span> <span class="nav-text">可以翻翻以前博客，有提到过的 node.js的安装 hexo的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再有就是qrbox的安装"><span class="nav-number">2.2.</span> <span class="nav-text">再有就是qrbox的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七牛云账户：需要在个人中心获取-AccessKey-和-SecretKey。"><span class="nav-number">2.3.</span> <span class="nav-text">七牛云账户：需要在个人中心获取 AccessKey 和 SecretKey。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备案过的域名（可选）"><span class="nav-number">2.4.</span> <span class="nav-text">备案过的域名（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七牛云平台余额有10元（可选）"><span class="nav-number">2.5.</span> <span class="nav-text">七牛云平台余额有10元（可选）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装操作（就复杂点的吧）"><span class="nav-number">3.</span> <span class="nav-text">安装操作（就复杂点的吧）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个blog文件夹用来放置-hexo"><span class="nav-number">3.1.</span> <span class="nav-text">创建一个blog文件夹用来放置 hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-下载node-js"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 下载node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-hexo"><span class="nav-number">3.3.</span> <span class="nav-text">安装 hexo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用七牛云平台"><span class="nav-number">4.</span> <span class="nav-text">使用七牛云平台</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在七牛云官网（http-www-qiniu-com-）注册一个账户。"><span class="nav-number">4.1.</span> <span class="nav-text">在七牛云官网（http://www.qiniu.com/）注册一个账户。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装qrsbox"><span class="nav-number">4.2.</span> <span class="nav-text">安装qrsbox</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-hexo"><span class="nav-number">5.</span> <span class="nav-text">配置 hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-目录"><span class="nav-number">5.1.</span> <span class="nav-text">hexo 目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">5.2.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next-主题"><span class="nav-number">5.3.</span> <span class="nav-text">Next 主题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿直</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyt7V9o5x';
+      var conf = '33120c43927a1d399a47fb366c264526';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
