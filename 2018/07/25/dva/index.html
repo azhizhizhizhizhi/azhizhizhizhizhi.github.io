@@ -174,9 +174,9 @@
 <h2 id="清楚dva是什么"><a href="#清楚dva是什么" class="headerlink" title="清楚dva是什么"></a>清楚<code>dva</code>是什么</h2><p>dva是基于现有架构（redux + react-router + redux-saga）封装的轻量级的前端框架。<br>然后呢分别介绍下这些架构</p>
 <blockquote>
 <p>. redux是javascript的状态容器，提供可预测化得状态管理。用于构建一致化的应用,在react中管理各个组件的状态，类似于vue全家桶中的vuex。redux不仅适用于react还适用各个框架中。</p>
-<p>. react-router 通过管理URL，实现组件的切换和状态的变化<br>eg:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -S react-router <span class="comment">//安装react-router</span></div><div class="line"><span class="keyword">import</span> &#123; Router &#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;<span class="comment">//引入router</span></div><div class="line">render(&lt;Router/&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));<span class="comment">//渲染到app结点</span></div></pre></td></tr></table></figure></p>
+<p>. react-router 通过管理URL，实现组件的切换和状态的变化<br>eg:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -S react-router <span class="comment">//安装react-router</span></div><div class="line"><span class="keyword">import</span> &#123; Router &#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;<span class="comment">//引入router</span></div><div class="line">render(<span class="xml"><span class="tag">&lt;<span class="name">Router</span>/&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));<span class="comment">//渲染到app结点</span></div></pre></td></tr></table></figure></p>
 </blockquote>
-<p>把router看作是一个容器，实现路由<br>eg:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Router, Route, hashHistory &#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</div><div class="line">render((</div><div class="line">  &lt;Router history=&#123;hashHistory&#125;&gt;</div><div class="line">    &lt;Route path="/" component=&#123;App&#125;/&gt;</div><div class="line">  &lt;/Router&gt;</div><div class="line">), document.getElementById('app'));</div></pre></td></tr></table></figure></p>
+<p>把router看作是一个容器，实现路由<br>eg:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Router, Route, hashHistory &#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</div><div class="line">render((</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Router</span> <span class="attr">history</span>=<span class="string">&#123;hashHistory&#125;</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">component</span>=<span class="string">&#123;App&#125;/</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">Router</span>&gt;</span></div><div class="line">), document.getElementById('app'));</div></pre></td></tr></table></figure></p>
 <p>上面这个就是通过路由<code>/</code>，组件就会访问到APP组件了。</p>
 <p>清楚了这些，就可以来说<code>dva</code>了<br>我们先安装，通过脚手架工具,初始话项目。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g dva-cli</div><div class="line">mkdir my-project</div><div class="line">cd my-project</div><div class="line">dva init</div><div class="line">npm start</div></pre></td></tr></table></figure></p>
 <p>项目初始化以后，默认的目录结构如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">|- mock</div><div class="line">|- node_modules</div><div class="line">|- package.json</div><div class="line">|- public</div><div class="line">|- src</div><div class="line">    |- asserts</div><div class="line">    |- components</div><div class="line">    |- models</div><div class="line">    |- routes</div><div class="line">    |- services</div><div class="line">    |- utils</div><div class="line">    |- router.js</div><div class="line">    |- index.js</div><div class="line">    |- index.css</div><div class="line">|- .editorconfig</div><div class="line">|- .eslintrc</div><div class="line">|- .gitignore</div><div class="line">|- .roadhogrc.mock.js</div><div class="line">|- .webpackrc</div></pre></td></tr></table></figure></p>
@@ -199,7 +199,7 @@
 <p>如上的一个 <code>model</code>，监听路由变化，当进入 <code>/user</code> 页面时，执行 <code>effects</code> 中的 <code>fetch</code>，以从服务端获取用户列表，然后 <code>fetch</code> 中触发 <code>reducers</code> 中的 <code>save</code> 将从服务端获取到的数据保存到 <code>state</code> 中。</p>
 <p>注意，在 <code>model</code> 中触发这个 <code>model</code> 中的 <code>action</code> 时不需要写命名空间，比如在 <code>fetch</code> 中触发 <code>save</code> 时是<code>{ type: &#39;save&#39; }</code>。而在组件中触发 <code>action</code> 时就需要带上命名空间了，比如在某个组件中触发 <code>fetch</code> 时，应该是 <code>{ type: &#39;user/fetch&#39; }</code>。</p>
 <h3 id="app"><a href="#app" class="headerlink" title="app"></a>app</h3><p>在<code>./src/index.js</code>中可以看到如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> dva <span class="keyword">from</span> <span class="string">'dva'</span>;</div><div class="line"><span class="keyword">const</span> app = dva();</div></pre></td></tr></table></figure></p>
-<h3 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h3><p>当写完 model 和组件后，需要将 model 和组件连接起来。dva 提供了 connect 方法，其实它就是 react-redux 的 connect。用法如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'dva'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> User = <span class="function">(<span class="params">&#123; dispatch, user &#125;</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">  )</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(<span class="function">(<span class="params">&#123; user &#125;</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> user;</div><div class="line">&#125;)(User);</div></pre></td></tr></table></figure></p>
+<h3 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h3><p>当写完 model 和组件后，需要将 model 和组件连接起来。dva 提供了 connect 方法，其实它就是 react-redux 的 connect。用法如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'dva'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> User = <span class="function">(<span class="params">&#123; dispatch, user &#125;</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">  )</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(<span class="function">(<span class="params">&#123; user &#125;</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> user;</div><div class="line">&#125;)(User);</div></pre></td></tr></table></figure></p>
 <p>connect 后的组件除了可以获取到 dispatch 和 state，还可以获取到 location 和 history。</p>
 <h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p><code>effects</code>和<code>subscrptions</code>会抛出错误都会经过<code>onError</code>钩子函数，所以可以在 onError 中进行全局错误处理。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> app = dva(&#123;</div><div class="line">  onError(err, dispatch) &#123;</div><div class="line">    <span class="built_in">console</span>.error(err);</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <h3 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h3><p>异步请求<br><code>dva</code>集成了 <code>isomorphic-fetch</code> 用于处理异步请求，并且使用 <code>dva-cli</code> 初始化的项目中，已经在 <code>./src/utils/request.js</code> 中对 <code>fetch</code> 进行了简单的封装，可以在这里根据服务端 API 的数据结构进行统一的错误处理。</p>
@@ -509,19 +509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">生活杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日记-记录生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">技术分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,7 +525,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+                <a href="javascript:void(0)" class="js-tag color5">生活杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日记-记录生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,7 +537,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,15 +545,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">表白</a>
+                <a href="javascript:void(0)" class="js-tag color3">招行</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">招行</a>
+                <a href="javascript:void(0)" class="js-tag color3">表白</a>
               </li>
              
               <li class="article-tag-list-item">
