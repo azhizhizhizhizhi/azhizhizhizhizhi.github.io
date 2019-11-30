@@ -177,7 +177,7 @@
 <h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><p>Canvas 对象表示一个 HTML 画布元素 canvas。它没有自己的行为，但是定义了一个 API 支持脚本化客户端绘图操作,用自带的api进行画图操作。<br>首先我们在body里面定义一个canvas对象</p>
 <a id="more"></a>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">style</span>=<span class="string">"border:1px solid black;margin:50px auto;display:block"</span> &gt;</span></div><div class="line">    		当前浏览器不支持Canvas，请更换浏览器后再试</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="运用canvas画图"><a href="#运用canvas画图" class="headerlink" title="运用canvas画图"></a>运用canvas画图</h2><p>构建环境<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">  var canvas = document.getElementById("canvas");//找到画布对象</div><div class="line">  canvas.width = 800;  //画布的长</div><div class="line">  canvas.height = 800;  //画布的宽</div><div class="line">  var ctx = canvas.getContext("2d");  //构建2d环境</div><div class="line">  </div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="运用canvas画图"><a href="#运用canvas画图" class="headerlink" title="运用canvas画图"></a>运用canvas画图</h2><p>构建环境<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);<span class="comment">//找到画布对象</span></div><div class="line">  canvas.width = <span class="number">800</span>;  <span class="comment">//画布的长</span></div><div class="line">  canvas.height = <span class="number">800</span>;  <span class="comment">//画布的宽</span></div><div class="line">  <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);  <span class="comment">//构建2d环境</span></div><div class="line">  </div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>弄好环境之后就可以进行画图了</p>
 <h2 id="定义一个画图的函数"><a href="#定义一个画图的函数" class="headerlink" title="定义一个画图的函数"></a>定义一个画图的函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawClock</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  ctx.clearRect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">500</span>,<span class="number">500</span>);先清空片矩形区域</div><div class="line">  <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();<span class="comment">//获取系统时间</span></div><div class="line">  <span class="keyword">var</span> second =now.getSeconds();  </div><div class="line">  <span class="keyword">var</span> minute =now.getMinutes();  </div><div class="line">  <span class="keyword">var</span> hour1 =now.getHours();  </div><div class="line">  <span class="comment">//获取时分秒</span></div><div class="line">  <span class="keyword">var</span> hour=hour1+minute/<span class="number">60</span>;  </div><div class="line">  hour=hour&gt;<span class="number">12</span> ?hour<span class="number">-12</span>:hour;  <span class="comment">//将24小时转换成12小时</span></div></pre></td></tr></table></figure>
 <h2 id="然后继续在这个函数里面画一个圆-用来当做表盘"><a href="#然后继续在这个函数里面画一个圆-用来当做表盘" class="headerlink" title="然后继续在这个函数里面画一个圆,用来当做表盘"></a>然后继续在这个函数里面画一个圆,用来当做表盘</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath(); <span class="comment">//开始画图</span></div><div class="line">ctx.lineWidth=<span class="number">8</span>;     <span class="comment">//线的宽度  </span></div><div class="line">ctx.strokeStyle=<span class="string">"black"</span>;  <span class="comment">//线的颜色</span></div><div class="line">ctx.arc(<span class="number">400</span>,<span class="number">400</span>,<span class="number">200</span>,<span class="number">0</span>,<span class="number">360</span>,<span class="literal">false</span>); <span class="comment">//画一个圆在（400,400）的位置上，半径为200px</span></div><div class="line"></div><div class="line">ctx.stroke();   <span class="comment">//填充线圈</span></div><div class="line">ctx.closePath();   <span class="comment">//结束这一阶段的操作</span></div></pre></td></tr></table></figure>
@@ -499,6 +499,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">生活杂谈</a>
               </li>
              
@@ -507,19 +515,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">技术分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,15 +523,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">python数据分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">免流</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,19 +531,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">招行</a>
+                <a href="javascript:void(0)" class="js-tag color3">免流</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">零售信贷客户经理</a>
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,6 +560,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">招行</a>
               </li>
              
               <li class="article-tag-list-item">
