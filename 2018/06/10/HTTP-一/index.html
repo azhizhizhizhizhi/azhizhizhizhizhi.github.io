@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>HTTP(一) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="HTTP 简略介绍(-)关于一些网络知识的总结吧，感觉面试肯定会被问到，诸如HTTP的状态码，保证TCP的可靠性连接，浏览器缓存等等，做个总结，忘记的时候过来看看，希望不要在这个上面丢分。 网络基础TCP&#x2F;IP 应用层 传输层 网络层 数据链路层应用层协议FTP DNS HTTP  传输层协议 TCP UDP 网络层网络层用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。该层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP(一)">
+<meta property="og:url" content="http://example.com/2018/06/10/HTTP-%E4%B8%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="HTTP 简略介绍(-)关于一些网络知识的总结吧，感觉面试肯定会被问到，诸如HTTP的状态码，保证TCP的可靠性连接，浏览器缓存等等，做个总结，忘记的时候过来看看，希望不要在这个上面丢分。 网络基础TCP&#x2F;IP 应用层 传输层 网络层 数据链路层应用层协议FTP DNS HTTP  传输层协议 TCP UDP 网络层网络层用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。该层">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-06-10T12:57:08.000Z">
+<meta property="article:modified_time" content="2018-06-11T08:54:30.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-HTTP-一" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/06/10/HTTP-%E4%B8%80/" class="article-date">
+  <time class="dt-published" datetime="2018-06-10T12:57:08.000Z" itemprop="datePublished">2018-06-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>►<a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95/%E7%BD%91%E7%BB%9C/">网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      HTTP(一)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="HTTP-简略介绍"><a href="#HTTP-简略介绍" class="headerlink" title="HTTP 简略介绍(-)"></a>HTTP 简略介绍(-)</h1><p>关于一些网络知识的总结吧，感觉面试肯定会被问到，诸如HTTP的状态码，保证TCP的可靠性连接，浏览器缓存等等，做个总结，忘记的时候过来看看，希望不要在这个上面丢分。</p>
+<h2 id="网络基础TCP-x2F-IP-应用层-传输层-网络层-数据链路层"><a href="#网络基础TCP-x2F-IP-应用层-传输层-网络层-数据链路层" class="headerlink" title="网络基础TCP&#x2F;IP 应用层 传输层 网络层 数据链路层"></a>网络基础TCP&#x2F;IP 应用层 传输层 网络层 数据链路层</h2><h2 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h2><p>FTP DNS HTTP </p>
+<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><p>协议 TCP UDP</p>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>网络层用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。该层规定了通过怎样的路径（所谓的传输路线）到达对方计算机，并把数据包传送给对方</p>
+<h2 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h2><p>用来处理连接网络的硬件部分。包括控制操作系统、硬件的设备驱动、NIC（Network<br>Interface Card，网络适配器，即网卡），及光纤等物理可见部分（还包括连接器等一切传输<br>媒介）。硬件上的范畴均在链路层的作用范围之内</p>
+<span id="more"></span>
+
+<h2 id="确保可靠性的TCP协议"><a href="#确保可靠性的TCP协议" class="headerlink" title="确保可靠性的TCP协议"></a>确保可靠性的TCP协议</h2><p>三次握手<br>客户端 发送标有SYN（同步）的数据包给服务器端<br>服务器端 回复客户端带有SYN&#x2F;ACk（同步&#x2F;确认）的数据包给客户端<br>客户端 回复服务器端标有ACK（确认）的数据包<br><br><br>四次挥手<br>客户端 发送标有FIN（结束）的数据包给 服务器端<br>服务器端 回复发送确认包ACK（确认）给 客户端<br>服务器端 发送标有FIN（结束）的数据包给 客户端<br>客户端 回复发送确认包ACK（确认）给 接收端</p>
+<h2 id="DNS协议负责域名解析的DNS服务"><a href="#DNS协议负责域名解析的DNS服务" class="headerlink" title="DNS协议负责域名解析的DNS服务"></a>DNS协议负责域名解析的DNS服务</h2><h2 id="URI（同一资源标志符）"><a href="#URI（同一资源标志符）" class="headerlink" title="URI（同一资源标志符）"></a>URI（同一资源标志符）</h2><p>URI是一个用于标识某一互联网资源名称的字符串。<br>以 <a target="_blank" rel="noopener" href="http://hackr.jp/index.htm">http://hackr.jp/index.htm</a> 作为URI请求的例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET http://hackr.jp/index.htm HTTP/1.1</span><br></pre></td></tr></table></figure>
+<p>除此之外，如果不是访问特定资源而是对服务器本身发起请求，可以用一个 * 来代替请求<br>URI。下面这个例子是查询 HTTP 服务器端支持 的 HTTP 方法种类。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS * HTTP/1.1</span><br></pre></td></tr></table></figure>
+
+<h2 id="告知服务器意图的HTTP方法"><a href="#告知服务器意图的HTTP方法" class="headerlink" title="告知服务器意图的HTTP方法"></a>告知服务器意图的HTTP方法</h2><p>GET: 获取资源<br>请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP/1.1</span><br><span class="line">Host: www.hackr.jp</span><br><span class="line">If-Modified-Since: Thu, 12 Jul 2012 07:30:00 GMT</span><br></pre></td></tr></table></figure>
+<p>响应<br>仅返回2012年7 月12日7 点30分以后更新过的index.html页面资源。如果未有内容更新，则以状态<br>码304 Not Modified作为响应返回</p>
+<p>POST：传输实体主体<br>POST 方法用来传输实体的主体。<br>虽然用 GET 方法也可以传输实体的主体，但一般不用 GET 方法进行传输，而是用POST方法。虽说POST的功能与GET很相似，但POST的主要目的并不是获取响应的主体内容。<br>请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">POST /submit.cgi HTTP/1.1</span><br><span class="line">Host: www.hackr.jp</span><br><span class="line">Content-Length: 1560（1560字节的数据）</span><br></pre></td></tr></table></figure>
+<p>响应<br>返回 submit.cgi 接收数据的处理结果</p>
+<p>PUT：传输文件<br>PUT 方法用来传输文件。就像 FTP 协议的文件上传一样，要求在请求报文的主体中包含文<br>件内容，然后保存到请求 URI 指定的位置。<br>鉴于 HTTP&#x2F;1.1的PUT方法自身不带验证机制，任何人都可以上传文件，存在安全性问题，因此一般的 Web 网站不使用该方法。<br>请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PUT /example.html HTTP/1.1</span><br><span class="line">Host: www.hackr.jp</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 1560（1560 字节的数据）</span><br></pre></td></tr></table></figure>
+<p>响应<br>响应返回状态码 204 No Content（比如 ：该 html 已存在于服务器上）</p>
+<h2 id="HTTP无状态协议，所以引入Cookie，运用cookie管理状态"><a href="#HTTP无状态协议，所以引入Cookie，运用cookie管理状态" class="headerlink" title="HTTP无状态协议，所以引入Cookie，运用cookie管理状态"></a>HTTP无状态协议，所以引入Cookie，运用cookie管理状态</h2><p>HTTP 协议因为是无状态的协议，所以他不会知道，<code>你是谁</code>,<code>你以前发过什么</code>，然后<code>你发过来的内容也不会知道是你发过来的</code>，HTTP协议就是这么无情。所以引入Cookie来管理状态，让通过HTTP协议接收的服务端知道你是谁。从而回应你，回你的话</p>
+<blockquote>
+<p>cookie会根据从服务器端发送的响应报文中写入cookie信息来控制客户端的状态。</p>
+</blockquote>
+<blockquote>
+<p>cookie会根据从服务器端发送的响应报文内的一个叫做Set-Cookie的首部字段信息，通知客户端保存Cookie，当下次客户端在往服务器端发送请求时，客户端会自动在请求报文中加入Cookie值后发送出去。</p>
+</blockquote>
+<blockquote>
+<p>服务器端发现客户端发送过来的Cookie后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息。</p>
+</blockquote>
+<p><code>第一次客户端请求的时候，--------》服务端生成cookie,然后传回给客户端响应里添加cookie（在响应报文的set-cookie里），然后客户端保存cookie 第二次客户端请求（请求里已经有了cookie信息状态），只需在请求中添加cookie后发送，服务器端检查cookie,服务端确认后响应客户端。 服务端就能知道客户端是谁了。 </code></p>
+<h2 id="HTTP报文内的HTTP信息"><a href="#HTTP报文内的HTTP信息" class="headerlink" title="HTTP报文内的HTTP信息"></a>HTTP报文内的HTTP信息</h2><p><code>无情的HTTP的报文组成</code><br>报文首部<br><code>无情的HTTP的头</code></p>
+<blockquote>
+<p>请求行</p>
+<blockquote>
+<p>Host:hackr.jp&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本机地址<br>User-Agent:Mozilla&#x2F;5.0&amp;nbsp;&amp;nbsp;&amp;nbsp;浏览器版本号<br>Accept:text&#x2F;html,application&#x2F;xhtml+xml &amp;nbsp;接受文件类型<br>Accept-Language:ja,en-us;q&#x3D;0.7 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;接受语言<br>Accept-Encoding:gzip,deflate &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;接受编码<br>DNT:1<br>Connection:keep-alive &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;关系，保持连接<br>Pragma:no-cache 编译指示:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;不隐藏<br>Cache-Control:no-cache</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>请求行：包含用于请求的方法，请求URI和HTTP版本</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>首部字段：包含表示和响应的各种条件和属性的各类首部。</p>
+<blockquote>
+<p>请求首部字段<br>通用首部字段<br>实体首部字段</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>其他</p>
+</blockquote>
+<p>报文实体<br><code>无情的HTTP的身体</code></p>
+<blockquote>
+<p>状态行</p>
+<blockquote>
+<p>HTTP&#x2F;1.1 &amp;nbsp; 200 &amp;nbsp;OK&amp;nbsp;&amp;nbsp;&amp;nbsp;转态码200ok<br>Date:Fri,13 jul 2012 02:45:26 GMT&amp;nbsp;&amp;nbsp;&amp;nbsp;发出时间<br>Server:Apache&amp;nbsp;&amp;nbsp;&amp;nbsp;服务器类型<br>Last-Modified:Fri,31 Aug 2007 02:02:20 GMT&amp;nbsp;&amp;nbsp;&amp;nbsp;最后修改时间<br>ETag:’asdfasfasdfasfasfdasd’<br>Accept-Ranges:bytes&amp;nbsp;&amp;nbsp;&amp;nbsp;支持单位：比特<br>Connection-Length:362&amp;nbsp;&amp;nbsp;&amp;nbsp;内容长度362比特<br>Connection:close 连接：关闭<br>Content-Type:text&#x2F;html 内容类型</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>状态行：包含表明响应结果的状态码，原因短语和HTTP版本</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>首部字段：包含表示和响应的各种条件和属性的各类首部。</p>
+<blockquote>
+<p>响应首部字段<br>通用首部字段<br>实体首部字段</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>其他</p>
+</blockquote>
+<h2 id="编码提升传输速率"><a href="#编码提升传输速率" class="headerlink" title="编码提升传输速率"></a>编码提升传输速率</h2><p>HTTP在传输数据时可以按照数据原貌直接传输，但也可以在传输过程中通过编码提升传输速率。通过在传输时编码，能有效地处理大量的访问请求。但是，编码的操作需要计算机来完成，因此会消耗更多的CPU等资源</p>
+<h2 id="报文主体和实体主体的差异"><a href="#报文主体和实体主体的差异" class="headerlink" title="报文主体和实体主体的差异"></a>报文主体和实体主体的差异</h2><blockquote>
+<p>报文（message）</p>
+<blockquote>
+<p>是 HTTP 通信中的基本单位，由 8 位组字节流（octet sequence，其中 octet 为 8 个比<br>特）组成，通过 HTTP 通信传输</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>实体（entity）</p>
+<blockquote>
+<p>作为请求或响应的有效载荷数据（补充项）被传输，其内容有实体首部和实体主体组成</p>
+</blockquote>
+</blockquote>
+<h2 id="压缩传送的内容编码"><a href="#压缩传送的内容编码" class="headerlink" title="压缩传送的内容编码"></a>压缩传送的内容编码</h2><p>向待发送邮件内增加附件时，为了使邮件容量变小，我们会先用 ZIP 压缩文件之后再添加<br>附件发送。HTTP 协议中有一种被称为内容编码的功能也能进行类似的操作。<br>内容编码指明应用在实体内容上的编码格式，并保持实体信息原样压缩。内容编码后的实体由客户端接收并负责解码</p>
+<blockquote>
+<p>常用的内容编码有以下几种</p>
+<blockquote>
+<p>gzip(GNU zip)<br>compress(UNIX系统的标准压缩)<br>deflate(zlib)<br>identity(不进行编码)</p>
+</blockquote>
+</blockquote>
+<h2 id="分块编码"><a href="#分块编码" class="headerlink" title="分块编码"></a>分块编码</h2><h2 id="获取部分内容的范围请求"><a href="#获取部分内容的范围请求" class="headerlink" title="获取部分内容的范围请求"></a>获取部分内容的范围请求</h2><p>对需要指定下载的实体范围，指定范围发送的请求叫范围请求（Range Request）</p>
+<blockquote>
+<p>对于1000字节大小的资源，如果使用范围请求，可以只请求5001~10000字节内的资源。</p>
+<blockquote>
+<p>执行范围请求时，会用到首部字段Range来指定资源的byte范围。<br>Range:bytes &#x3D; 5001~10000</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>从5001字节之后全部的</p>
+<blockquote>
+<p>Range:byte&#x3D;5001-</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>从一开始到3000字节和5000~7000字节的多重范围</p>
+<blockquote>
+<p>Range:bytes&#x3D;-3000,5000-7000</p>
+</blockquote>
+</blockquote>
+<p>针对范围请求，响应会返回状态码206Partial Content的响应报文，另外，对于多重范围的范围请求，响应会在首部字段Content-Type表明multipart&#x2F;byteranges后返回响应报文。<br>如果服务器端无法响应范围请求，则会返回状态码200 OK和完整的实体内容</p>
+<h2 id="返回结果的HTTP状态码"><a href="#返回结果的HTTP状态码" class="headerlink" title="返回结果的HTTP状态码"></a>返回结果的HTTP状态码</h2><p>HTTP转态码表示客户端HTTP请求的返回结果、标记服务器端的处理是否正常，通知出现的错误等工作。</p>
+<table>
+<thead>
+<tr>
+<th>&amp;nbsp;</th>
+<th>类别</th>
+<th>原因短语</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1XX</td>
+<td>Informational(信息性状态码)</td>
+<td>接受的请求正在处理</td>
+</tr>
+<tr>
+<td>2XX</td>
+<td>Success(成功状态码)</td>
+<td>请求正常处理完毕</td>
+</tr>
+<tr>
+<td>3XX</td>
+<td>Redirecion(重定向状态码)</td>
+<td>需要进行附加操作以完成请</td>
+</tr>
+<tr>
+<td>4XX</td>
+<td>Client Error(客户端错误状态码)</td>
+<td>服务器无法处理请求</td>
+</tr>
+<tr>
+<td>5XX</td>
+<td>Server Error(服务器错误状态码)</td>
+<td>服务器处理请求出错</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>代表性的14种状态码</p>
+<blockquote>
+<p>2XX 响应结果表明请求被正常处理了。</p>
+<blockquote>
+<p>200 OK表示从客户端发来的请求在服务器端被正常处理了<br>204 No Content 请求处理成功，但没有资源可返回<br>206 Partial Content 客户端进行了范围请求，同时服务器成功执行了这部分的GET请求，响应报文中包含由Content-Range指定范围的实体内容</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>3XX 重定向 响应结果表明浏览器需要执行某些特殊的处理以正确处理请求</p>
+<blockquote>
+<p>301 Moyed Permanently 永久性重定向</p>
+<blockquote>
+<p>永久性重定向：该状态码表示请求的资源已被分配了新的URI，以后使用资源现在所指的URI。也就是说，如果已经把资源对应的URI保存为书签了，这时应该按Location首部字段提示的URI重新保存<br>发送请求时，当指定资源路径的最后忘记添加斜杆”&#x2F;“，就会产生301转态码.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>302 Found 临时性重定向</p>
+<blockquote>
+<p>临时性重定向，该状态码表示请求的资源已被分配了新的URI，希望用户（本次）能使用新的URI访问。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>和301 Moved Permanently 状态码相似，但302状态码代表的资源不是被永久移动，只是临时性质的，换句话说，已移动的资源对应的URI将来还有可能发生改变，比如用户把URI保存成书签，但不会像301状态码出现时那样去更新书签，而是仍旧保留返回302状态码的页面对应的URI。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>303 See Other 该状态码表示由于请求对应的资源存在着另一个 URI，应使用 GET 方法定向获取请求的资<br>源</p>
+<blockquote>
+<p>303 状态码和 302 Found 状态码有着相同的功能，但 303 状态码明确表示客户端应当采用<br>GET 方法获取资源，这点与 302 状态码有区别.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>比如，当使用 POST 方法访问 CGI 程序，其执行后的处理结果是希望客户端能以 GET 方法<br>重定向到另一个 URI 上去时，返回 303 状态码。虽然 302 Found 状态码也可以实现相同的功<br>能，但这里使用 303 状态码是最理想的。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>当 301、302、303 响应状态码返回时，几乎所有的浏览器都会把 POST 改成 GET，并删<br>除请求报文内的主体，之后请求会自动再次发送。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>301、302 标准是禁止将 POST 方法改变成 GET 方法的，但实际使用时大家都会这么做。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>304 Not Modified 资源已找到，但未符合条件请求……..</p>
+<blockquote>
+<p>该状态码表示客户端发送附带条件的请求时，服务器端允许请求访问资源，但未满足条件的情况，304状态码返回时，不包含任何响应的主体部分，304虽然被划分在3XX类别中，但是和重定向没有关系。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>307 Temporary Redirect 临时重定向</p>
+<blockquote>
+<p>临时重定向：该转态码与302Found有着相同的含义。尽管302标准禁止POST变换成GET，但实际使用时大家并不遵守。<br>307会遵照浏览器标准，不会从POST变成GET，但是，对于处理响应时的行为，每种浏览器有可能会出现不同的情况</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>4XX 客户端错误 响应结果表明客户端是发生错误的原因所在。</p>
+<blockquote>
+<p>400 Bad Request 该转态码表示请求报文中存在语法错误，但错误发生时，需修改请求的内容后再次发送请求，另外，浏览器会像200 OK一样对待该状态码</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>401 Unauthorized 未经授权</p>
+<blockquote>
+<p>该状态码表示发送的请求需要有通过HTTP认证（BASIC认证、DIGEST认证）的认证信息，另外若之前已进行过1次请求，则表示用户认证失败。<br>返回含有401的响应必须包含一个适用于被请求资源的WWW—Authenticate首部用以咨询（challenge）用户信息。当浏览器再次受到401响应，会弹出认证用的对话窗口.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>403 Forbidden 被禁止</p>
+<blockquote>
+<p>该状态码表明对请求资源的访问被服务器拒绝了，服务器没有必要给出拒绝的详细理由，但如果想做说明的话，可以在实体的部分主体对原因进行描述，这样就能让用户看到了。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>404 Not Found 该状态码表明服务器上无法找到请求的资源，除此之外，也可以在服务器端拒绝请求且不想说明理由时使用 </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>5XX 服务器错误</p>
+<blockquote>
+<p>500 Internal Server Error 网络服务错误 该状态码表明服务器端在执行请求时发生了错误，也可能是WEB应用存在的BUG或某些临时的故障。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>503 Service Unavailable 服务不可用</p>
+<blockquote>
+<p>该状态码表明服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。如果事先得知解除以上状况需要的时间，最好写入 RetryAfter 首部字段再返回给客户端</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>状态码和状况的不一致<br>不少返回的状态码响应都是错误的，但是用户可能察觉不到这点。比如 Web 应用程序内部发生错误，状态码依然返回 200 OK，这种情况也经常遇到</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h2><p>缓存是指代理服务器或客户端本地磁盘内保存的资源副本。利用缓存可减少对源服务器上的访问，因此也就节省了通行流量和通信时间。<br>缓存服务器是代理服务器的一种，并归类在缓存代理类型中。换句话说，当代理转发从服务器返回的响应时，代理服务器将会保存一份资源的副本<br>缓存服务器的优势在于利用缓存可避免多次从源服务器转发资源。因此客户端可就近从缓存服务器上获取资源，而源服务器也不必多次处理相同的请求了</p>
+<h3 id="缓存代理（Caching-Proxy）：会预先将资源的副本（缓存）保存在代理服务器上。"><a href="#缓存代理（Caching-Proxy）：会预先将资源的副本（缓存）保存在代理服务器上。" class="headerlink" title="缓存代理（Caching Proxy）：会预先将资源的副本（缓存）保存在代理服务器上。"></a>缓存代理（Caching Proxy）：会预先将资源的副本（缓存）保存在代理服务器上。</h3><h3 id="缓存的有效期"><a href="#缓存的有效期" class="headerlink" title="缓存的有效期"></a>缓存的有效期</h3><p>当遇上源服务器上的资源更新时，如果还是使用不变的缓存，那就会演变成返回更新前的“旧”资源了<br>即使存在缓存，也会因为客户端的要求、缓存的有效期等因素，向源服务器确认资源的有效性。若判断缓存失效，缓存服务器将会再次从源服务器上获取“新”资源。</p>
+<h2 id="客户端的缓存"><a href="#客户端的缓存" class="headerlink" title="客户端的缓存"></a>客户端的缓存</h2><p>缓存不仅可以存在于缓存服务器内，还可以存在客户端浏览器中。以 Internet Explorer 程序为例，把客户端缓存称为临时网络文件（Temporary Internet File）。浏览器缓存如果有效，就不必再向服务器请求相同的资源了，可以直接从本地磁盘内读<br>取。<br>另外，和缓存服务器相同的一点是，当判定缓存过期后，会向源服务器确认资源的有效性。若判断浏览器缓存失效，浏览器会再次请求新资源。</p>
+<p><code>1.浏览器请求——&gt;2.无缓存——&gt;3.向web服务器请求——&gt;4.请求响应、缓存协商——&gt;5.呈现</code><br><code>在第4个步骤，在响应消息的头字段，会有Expires、Cache-Control、缓存时间、Etag、Last-Modified等信息。</code><br>浏览器缓存优点</p>
+<blockquote>
+<p>减少冗余的数据传输<br>减少服务器的负担<br>加快客户端加载网页的速度</p>
+</blockquote>
+<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>协商缓存是利用HTTP请求头中的属性【Last-Modified，If-Modified-Since】和【ETag、If-None-Match】这两对Header来管理的。<br>【Last-Modified，If-Modified-Since】：If-Modified-Since就是上次请求返回的Last-Modified，服务器再次收到资源请求时，根据浏览器传过来If-Modified-Since和资源在服务器上的最后修改时间判断资源是否有变化，如果有变化，就正常返回资源内容。如果没有变化，就返回304，不返回资源内容，不更新Last-Modified。</p>
+<p>一般来说，在没有调整服务器时间和篡改客户端缓存的情况下，这两个header配合起来管理协商缓存是非常可靠的，但是有时候也会服务器上资源其实有变化，但是最后修改时间却没有变化的情况，而这种问题又很不容易被定位出来，而当这种情况出现的时候，就会影响协商缓存的可靠性。所以就有了另外一对header来管理协商缓存，这对header就是【ETag、If-None-Match】。它们的缓存管理的方式是：</p>
+<p>【ETag、If-None-Match】：浏览器第一次跟服务器请求一个资源，服务器在返回这个资源的同时，在respone的header加上ETag的header，这个header是服务器根据当前请求的资源生成的一个唯一标识，这个唯一标识是一个字符串，只要资源有变化这个串就不同，跟最后修改时间没有关系，服务器再次收到资源请求时，根据浏览器传过来If-None-Match和然后再根据资源生成一个新的ETag，如果这两个值相同就说明资源没有变化，否则就是有变化；如果没有变化，返回304返回ETag不返回资源；如果有变化，返回资源。</p>
+<h2 id="HTTP之前的协议"><a href="#HTTP之前的协议" class="headerlink" title="HTTP之前的协议"></a>HTTP之前的协议</h2><blockquote>
+<p>FTP(File Transfer Protocol) 文件传输<br>NNTP(Network News Transfer Protocol) 电子会议室内传送消息的协议<br>Archie 搜索 anonymous FTP 公开的文件信息的协议<br>WAIS（Wide Area Information Servers）以关键词检索多个数据库使用的<br>Gopher 查找与互联网连接的计算机内信息的协议</p>
+</blockquote>
+<h2 id="下次在总结关于HTTP的安全问题，身份认证，报文信息等"><a href="#下次在总结关于HTTP的安全问题，身份认证，报文信息等" class="headerlink" title="下次在总结关于HTTP的安全问题，身份认证，报文信息等"></a>下次在总结关于HTTP的安全问题，身份认证，报文信息等</h2><p>如有写的不对的地方希望大家指正。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/06/10/HTTP-%E4%B8%80/" data-id="cl70o66fg0004k8u95vws2klp" data-title="HTTP(一)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/11/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E2%80%94%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          快速排序———总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/06/CSS3-%E5%8A%A8%E7%94%BB%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS3 动画总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/%E7%BD%91%E7%BB%9C/">网络</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">python数据分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%BB%E5%8A%A1/" rel="tag">任务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E6%B5%81/" rel="tag">免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" rel="tag">技术分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" rel="tag">日记-记录生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E6%96%87/" rel="tag">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" rel="tag">生活杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A8%E7%99%BD/" rel="tag">表白</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" rel="tag">随想随记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">python数据分析</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">任务</a> <a href="/tags/%E5%85%8D%E6%B5%81/" style="font-size: 10px;">免流</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" style="font-size: 10px;">技术分享</a> <a href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" style="font-size: 13.33px;">日记-记录生活</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%9D%82%E6%96%87/" style="font-size: 10px;">杂文</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">生活杂谈</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%A1%A8%E7%99%BD/" style="font-size: 10px;">表白</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 10px;">随想</a> <a href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" style="font-size: 10px;">随想随记</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/16/%E5%B0%8F%E6%9D%8E%E6%98%AF%E4%B8%AA%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%BA/">小李是个什么样的人</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/%E5%A4%A7%E7%90%86/">大理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/freedom/">freedom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/22/%E8%87%AA%E5%B7%B1%E5%8A%A0%E6%B2%B9%E6%89%93%E6%B0%94%E5%93%88/">自己加油打气哈</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/01/%E6%97%A0%E9%A2%98/">无题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

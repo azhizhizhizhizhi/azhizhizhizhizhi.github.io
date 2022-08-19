@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>python机器学习——SCUEC入学预警 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="python机器学习——SCUEC入学预警本次项目为学长运用Python2编写的项目，我主要任务是转换成python3并进行精度提高以及代码优化1.采用平台anaconda 3 python 3.5,编译器Jupyter Notebook2.工程中使用到的python类库 pandas(数据分析包),numpy(相关计算方向，支持多维计算与矩阵运算)，matplotlib（图像处理库）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python机器学习——SCUEC入学预警">
+<meta property="og:url" content="http://example.com/2018/04/08/python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94SCUEC%E5%85%A5%E5%AD%A6%E9%A2%84%E8%AD%A6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="python机器学习——SCUEC入学预警本次项目为学长运用Python2编写的项目，我主要任务是转换成python3并进行精度提高以及代码优化1.采用平台anaconda 3 python 3.5,编译器Jupyter Notebook2.工程中使用到的python类库 pandas(数据分析包),numpy(相关计算方向，支持多维计算与矩阵运算)，matplotlib（图像处理库）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-04-08T09:14:50.000Z">
+<meta property="article:modified_time" content="2018-06-10T13:00:28.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="python数据分析">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-python机器学习——SCUEC入学预警" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/04/08/python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94SCUEC%E5%85%A5%E5%AD%A6%E9%A2%84%E8%AD%A6/" class="article-date">
+  <time class="dt-published" datetime="2018-04-08T09:14:50.000Z" itemprop="datePublished">2018-04-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      python机器学习——SCUEC入学预警
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="python机器学习——SCUEC入学预警"><a href="#python机器学习——SCUEC入学预警" class="headerlink" title="python机器学习——SCUEC入学预警"></a>python机器学习——SCUEC入学预警</h1><h1 id="本次项目为学长运用Python2编写的项目，我主要任务是转换成python3并进行精度提高以及代码优化"><a href="#本次项目为学长运用Python2编写的项目，我主要任务是转换成python3并进行精度提高以及代码优化" class="headerlink" title="本次项目为学长运用Python2编写的项目，我主要任务是转换成python3并进行精度提高以及代码优化"></a>本次项目为学长运用Python2编写的项目，我主要任务是转换成python3并进行精度提高以及代码优化</h1><h2 id="1-采用平台anaconda-3-python-3-5-编译器Jupyter-Notebook"><a href="#1-采用平台anaconda-3-python-3-5-编译器Jupyter-Notebook" class="headerlink" title="1.采用平台anaconda 3 python 3.5,编译器Jupyter Notebook"></a>1.采用平台anaconda 3 python 3.5,编译器Jupyter Notebook</h2><h2 id="2-工程中使用到的python类库-pandas-数据分析包-numpy-相关计算方向，支持多维计算与矩阵运算-，matplotlib（图像处理库）"><a href="#2-工程中使用到的python类库-pandas-数据分析包-numpy-相关计算方向，支持多维计算与矩阵运算-，matplotlib（图像处理库）" class="headerlink" title="2.工程中使用到的python类库 pandas(数据分析包),numpy(相关计算方向，支持多维计算与矩阵运算)，matplotlib（图像处理库）"></a>2.工程中使用到的python类库 pandas(数据分析包),numpy(相关计算方向，支持多维计算与矩阵运算)，matplotlib（图像处理库）</h2><span id="more"></span>
+<h3 id="2-1-pandas中的数据结构"><a href="#2-1-pandas中的数据结构" class="headerlink" title="2.1 pandas中的数据结构:"></a>2.1 pandas中的数据结构:</h3><blockquote>
+<p><code>Series</code>一维数组<br><code>Time- Series</code>以时间为索引的<code>Series</code><br><code>DataFrame</code>：二维的表格型数据结构,可以将DataFrame理解为Series的容器<br><code>Panel</code>三维的数组，可以理解为DataFrame的容器。<br>学习网址：<a target="_blank" rel="noopener" href="http://codingpy.com/article/a-quick-intro-to-pandas/">http://codingpy.com/article/a-quick-intro-to-pandas/</a></p>
+</blockquote>
+<h3 id="2-2-numpy中的数据结构"><a href="#2-2-numpy中的数据结构" class="headerlink" title="2.2 numpy中的数据结构"></a>2.2 numpy中的数据结构</h3><blockquote>
+<p><code>ndarray</code>：NumPy的核心功能是”ndarray”(即n-dimensional array，多维数组)数据结构。这是一个表示多维度、同质并且固定大小的数组对象。而由一个与此数组相关系的数据类型对象来描述其数组元素的数据格式(例如其字符组顺序、在存储器中占用的字符组数量、整数或者浮点数等等)。</p>
+<blockquote>
+<p>列子1：创建数组</p>
+<blockquote>
+<p>import numpy as np<br>x &#x3D; np.array([1, 2, 3])<br>x<br>输出：array([1, 2, 3])<br>y &#x3D; np.arange(10)  # 類似 Python 的 range, 但是回傳 array<br>y<br>输出：array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>列子2：基本运算</p>
+<blockquote>
+<p>a &#x3D; np.array([1, 2, 3, 6])<br>b &#x3D; np.linspace(0, 2, 4)  # 建立一個array, 在0與2的範圍之間讓4個點等分<br>c &#x3D; a - b<br>c<br>输出：array([ 1.        ,  1.33333333,  1.66666667,  4.        ])<br>a**2<br>输出：array([ 1,  4,  9, 36])</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="2-3-matplotlib介绍"><a href="#2-3-matplotlib介绍" class="headerlink" title="2.3 matplotlib介绍"></a>2.3 matplotlib介绍</h2><p>matplotlib 是Python编程语言及其数值数学扩展包 NumPy的可视化操作界面。它为利用通用的图形用户界面工具包，如Tkinter, wxPython, Qt或GTK+向应用程序嵌入式绘图提供了应用程序接口（API）。此外，matplotlib还有一个基于图像处理库（如开放图形库OpenGL）的pylab接口，其设计与MATLAB非常类似–尽管并不怎么好用。SciPy就是用matplotlib进行图形绘制。</p>
+<p>matplotlib最初由John D. Hunter撰写，它拥有一个活跃的开发社区，并且根据BSD样式许可证分发。 在John D. Hunter2012年去世前不久，迈克尔Droettboom被提名为matplotlib的主要开发者。</p>
+<p>截至到2015年10月30日，matplotlib 1.5.x支持Python 2.7到3.5版本。 Matplotlib 1.2是matplotlib的第一个版本，支持Python 3.x. Matplotlib 1.4是matplotlib支持Python 2.6的最后一个版本</p>
+<blockquote>
+<p>例子1 曲线图</p>
+<blockquote>
+<blockquote>
+<p>import matplotlib.pyplot as plt<br>import numpy as np<br>a &#x3D; np.linspace(0,10,100)<br>b &#x3D; np.exp(-a)<br>plt.plot(a,b)<br>plt.show()</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>例子2 直方图</p>
+<blockquote>
+<blockquote>
+<p>import matplotlib.pyplot as plt<br>from numpy.random import normal,rand<br>x &#x3D; normal(size&#x3D;200)<br>plt.hist(x,bins&#x3D;30)<br>plt.show()</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>例子3 散点图</p>
+<blockquote>
+<blockquote>
+<p>import matplotlib.pyplot as plt<br>from numpy.random import rand<br>a &#x3D; rand(100)<br>b &#x3D; rand(100)<br>plt.scatter(a,b)<br>plt.show()</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>例子四 3D图</p>
+<blockquote>
+<blockquote>
+<p>from matplotlib import cm<br>from mpl_toolkits.mplot3d import Axes3D<br>import matplotlib.pyplot as plt<br>import numpy as np<br>fig &#x3D; plt.figure()<br>ax &#x3D; fig.gca(projection&#x3D;’3d’)<br>X &#x3D; np.arange(-5, 5, 0.25)<br>Y &#x3D; np.arange(-5, 5, 0.25)<br>X, Y &#x3D; np.meshgrid(X, Y)<br>R &#x3D; np.sqrt(X<strong>2 + Y</strong>2)<br>Z &#x3D; np.sin(R)<br>surf &#x3D; ax.plot_surface(X, Y, Z, rstride&#x3D;1, cstride&#x3D;1, cmap&#x3D;cm.coolwarm)<br>plt.show()</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="3-准备事项完成之后开始介绍本次分析"><a href="#3-准备事项完成之后开始介绍本次分析" class="headerlink" title="3 准备事项完成之后开始介绍本次分析"></a>3 准备事项完成之后开始介绍本次分析</h1><h2 id="3-1常用操作"><a href="#3-1常用操作" class="headerlink" title="3.1常用操作"></a>3.1常用操作</h2><blockquote>
+<p>获取数据集 <code>rx_data = pd.read_csv(&#39;path&#39;,encoding=&#39;gbk&#39;index=False||true)</code><br>打印数据集中元素 <code>rx_data.head()</code>&#x2F;&#x2F;默认是前5个，也可以修改，tail()是从后往前输出<br>对数据集中新加入某一列 <code>rx_data=rx_data.join(xb_dummies)</code></p>
+<blockquote>
+<p>&#x2F;&#x2F;对性别热编码<br>xb_dummies&#x3D;pd.get_dummies(rx_data[‘xb’])<br>&#x2F;&#x2F;获取性别男女，新加入数据集中  女：1，男：0<br>xb_dummies.columns&#x3D;[‘female’,’male’]<br>&#x2F;&#x2F;新加的列<br>rx_data&#x3D;rx_data.join(xb_dummies)</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>获取数据集中i属性的数据集的分类以及数量<code>rx_data[&#39;i&#39;].value_counts()</code><br>保存数据集操作：to_csv <code>rx_data = rx_data.to_csv(&#39;path&#39;,encoding = &quot;utf-8&quot;,index=False)</code><br>替换数据集中某一项数据操作<code>rx_data[&#39;i&#39;]=rx_data[&#39;i&#39;].apply(x)</code></p>
+</blockquote>
+<h2 id="3-2项目思想"><a href="#3-2项目思想" class="headerlink" title="3.2项目思想"></a>3.2项目思想</h2><p>获取到学生入学各个数据之后，建立成表（数据集）<br>通过对数据集的操作分析来预测接下来一学期可能会遇到的问题<br>数据集中属性大部分以拼音首字母表示<br>通过对 性别，生源地，高考分数，各地高考分数线，是否为少数民族，与学校分数线差距来建立模型，预测给予一个入学基础分数</p>
+<h2 id="3-3项目成果"><a href="#3-3项目成果" class="headerlink" title="3.3项目成果"></a>3.3项目成果</h2><p>对每一个学生都有了一个相较于同一水平的分数，能更好的直观的了解学生入学情况，数据化，可视化的清楚学生的各个入学相较于大环境的水平。更能准确的表现出学生学习能力。</p>
+<h2 id="3-3项目不足"><a href="#3-3项目不足" class="headerlink" title="3.3项目不足"></a>3.3项目不足</h2><p>各地分数线不一致，可能会出现基础分数线相差很大的情况<br>各属性权重不好设定，没有权威科学的数据统计方法证明属性权重的分配<br>只能大致的测量出学生数据，但是没有验证集验证数据是否正确，需要后续数据的支持<br>挂科不止和入学成绩，生源地有关，还和学生心理，性格等多方面因素有关，数据还较为缺少。<br>针对预科情况：入学分数明显低于入学基础分数，但是学业预警的不是很多，因为大部分课程已在预科阶段就上过，所以特例应该要特殊分析</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/04/08/python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94SCUEC%E5%85%A5%E5%AD%A6%E9%A2%84%E8%AD%A6/" data-id="cl70o66fp000pk8u97qpggmrb" data-title="python机器学习——SCUEC入学预警" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">python数据分析</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/06/CSS3-%E5%8A%A8%E7%94%BB%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS3 动画总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/25/%E8%BF%91%E6%9C%9F%E4%BB%BB%E5%8A%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">近期任务</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/%E7%BD%91%E7%BB%9C/">网络</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">python数据分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%BB%E5%8A%A1/" rel="tag">任务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E6%B5%81/" rel="tag">免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" rel="tag">技术分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" rel="tag">日记-记录生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E6%96%87/" rel="tag">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" rel="tag">生活杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A8%E7%99%BD/" rel="tag">表白</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" rel="tag">随想随记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">python数据分析</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">任务</a> <a href="/tags/%E5%85%8D%E6%B5%81/" style="font-size: 10px;">免流</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" style="font-size: 10px;">技术分享</a> <a href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" style="font-size: 13.33px;">日记-记录生活</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%9D%82%E6%96%87/" style="font-size: 10px;">杂文</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">生活杂谈</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%A1%A8%E7%99%BD/" style="font-size: 10px;">表白</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 10px;">随想</a> <a href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" style="font-size: 10px;">随想随记</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/16/%E5%B0%8F%E6%9D%8E%E6%98%AF%E4%B8%AA%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%BA/">小李是个什么样的人</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/%E5%A4%A7%E7%90%86/">大理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/freedom/">freedom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/22/%E8%87%AA%E5%B7%B1%E5%8A%A0%E6%B2%B9%E6%89%93%E6%B0%94%E5%93%88/">自己加油打气哈</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/01/%E6%97%A0%E9%A2%98/">无题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>canvas实现动态时钟 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Canvas实现的动态时钟实验室杨老大给的假期任务，不管用什么方式实现一个动态的时钟。因为我是弄web的来着，思前想后比较容易的实现方式就canvas或者css3了，所以就决定用canvas画个时钟出来。 canvasCanvas 对象表示一个 HTML 画布元素 canvas。它没有自己的行为，但是定义了一个 API 支持脚本化客户端绘图操作,用自带的api进行画图操作。首先我们在body里面定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas实现动态时钟">
+<meta property="og:url" content="http://example.com/2017/07/29/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Canvas实现的动态时钟实验室杨老大给的假期任务，不管用什么方式实现一个动态的时钟。因为我是弄web的来着，思前想后比较容易的实现方式就canvas或者css3了，所以就决定用canvas画个时钟出来。 canvasCanvas 对象表示一个 HTML 画布元素 canvas。它没有自己的行为，但是定义了一个 API 支持脚本化客户端绘图操作,用自带的api进行画图操作。首先我们在body里面定">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/tu1.png">
+<meta property="og:image" content="http://example.com/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/tu2.png">
+<meta property="og:image" content="http://example.com/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/tu3.png">
+<meta property="article:published_time" content="2017-07-29T07:30:52.000Z">
+<meta property="article:modified_time" content="2017-07-29T09:37:12.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/tu1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-canvas实现动态时钟" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/07/29/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/" class="article-date">
+  <time class="dt-published" datetime="2017-07-29T07:30:52.000Z" itemprop="datePublished">2017-07-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      canvas实现动态时钟
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Canvas实现的动态时钟"><a href="#Canvas实现的动态时钟" class="headerlink" title="Canvas实现的动态时钟"></a>Canvas实现的动态时钟</h1><p>实验室杨老大给的假期任务，不管用什么方式实现一个动态的时钟。<br>因为我是弄web的来着，思前想后比较容易的实现方式就canvas或者css3了，所以就决定用canvas画个时钟出来。</p>
+<h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><p>Canvas 对象表示一个 HTML 画布元素 canvas。它没有自己的行为，但是定义了一个 API 支持脚本化客户端绘图操作,用自带的api进行画图操作。<br>首先我们在body里面定义一个canvas对象</p>
+<span id="more"></span>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span> <span class="attr">style</span>=<span class="string">&quot;border:1px solid black;margin:50px auto;display:block&quot;</span> &gt;</span></span><br><span class="line">    		当前浏览器不支持Canvas，请更换浏览器后再试</span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="运用canvas画图"><a href="#运用canvas画图" class="headerlink" title="运用canvas画图"></a>运用canvas画图</h2><p>构建环境</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;canvas&quot;</span>);<span class="comment">//找到画布对象</span></span></span><br><span class="line"><span class="language-javascript">  canvas.<span class="property">width</span> = <span class="number">800</span>;  <span class="comment">//画布的长</span></span></span><br><span class="line"><span class="language-javascript">  canvas.<span class="property">height</span> = <span class="number">800</span>;  <span class="comment">//画布的宽</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);  <span class="comment">//构建2d环境</span></span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>弄好环境之后就可以进行画图了</p>
+<h2 id="定义一个画图的函数"><a href="#定义一个画图的函数" class="headerlink" title="定义一个画图的函数"></a>定义一个画图的函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">drawClock</span>(<span class="params"></span>)&#123;</span><br><span class="line">  ctx.<span class="title function_">clearRect</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">500</span>,<span class="number">500</span>);先清空片矩形区域</span><br><span class="line">  <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="title class_">Date</span>();<span class="comment">//获取系统时间</span></span><br><span class="line">  <span class="keyword">var</span> second =now.<span class="title function_">getSeconds</span>();  </span><br><span class="line">  <span class="keyword">var</span> minute =now.<span class="title function_">getMinutes</span>();  </span><br><span class="line">  <span class="keyword">var</span> hour1 =now.<span class="title function_">getHours</span>();  </span><br><span class="line">  <span class="comment">//获取时分秒</span></span><br><span class="line">  <span class="keyword">var</span> hour=hour1+minute/<span class="number">60</span>;  </span><br><span class="line">  hour=hour&gt;<span class="number">12</span> ?hour-<span class="number">12</span>:hour;  <span class="comment">//将24小时转换成12小时</span></span><br></pre></td></tr></table></figure>
+<h2 id="然后继续在这个函数里面画一个圆-用来当做表盘"><a href="#然后继续在这个函数里面画一个圆-用来当做表盘" class="headerlink" title="然后继续在这个函数里面画一个圆,用来当做表盘"></a>然后继续在这个函数里面画一个圆,用来当做表盘</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="title function_">beginPath</span>(); <span class="comment">//开始画图</span></span><br><span class="line">ctx.<span class="property">lineWidth</span>=<span class="number">8</span>;     <span class="comment">//线的宽度  </span></span><br><span class="line">ctx.<span class="property">strokeStyle</span>=<span class="string">&quot;black&quot;</span>;  <span class="comment">//线的颜色</span></span><br><span class="line">ctx.<span class="title function_">arc</span>(<span class="number">400</span>,<span class="number">400</span>,<span class="number">200</span>,<span class="number">0</span>,<span class="number">360</span>,<span class="literal">false</span>); <span class="comment">//画一个圆在（400,400）的位置上，半径为200px</span></span><br><span class="line"></span><br><span class="line">ctx.<span class="title function_">stroke</span>();   <span class="comment">//填充线圈</span></span><br><span class="line">ctx.<span class="title function_">closePath</span>();   <span class="comment">//结束这一阶段的操作</span></span><br></pre></td></tr></table></figure>
+<p>效果图<br><img src="/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/tu1.png"></p>
+<h2 id="之后就是画表盘上的刻度-分别是小时和分钟"><a href="#之后就是画表盘上的刻度-分别是小时和分钟" class="headerlink" title="之后就是画表盘上的刻度 分别是小时和分钟"></a>之后就是画表盘上的刻度 分别是小时和分钟</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="number">12</span>;i++)&#123;</span><br><span class="line"> 	ctx.<span class="title function_">save</span>();  <span class="comment">//保存当前状态  </span></span><br><span class="line">     ctx.<span class="property">lineWidth</span>=<span class="number">5</span>;   <span class="comment">//刻度粗细  </span></span><br><span class="line">     ctx.<span class="property">strokeStyle</span>=<span class="string">&quot;black&quot;</span> ; <span class="comment">//刻度颜色  </span></span><br><span class="line">     ctx.<span class="title function_">translate</span>(<span class="number">250</span>,<span class="number">250</span>);  <span class="comment">//设置00点,以画布中心为00  </span></span><br><span class="line">     ctx.<span class="title function_">rotate</span>(i*<span class="number">30</span>*<span class="title class_">Math</span>.<span class="property">PI</span>/<span class="number">180</span>);  <span class="comment">//设置旋转角度 参数是弧度，角度 0--360 弧度角度*Math.PI/180  </span></span><br><span class="line">     ctx.<span class="title function_">beginPath</span>();  </span><br><span class="line">     ctx.<span class="title function_">moveTo</span>(<span class="number">0</span>,-<span class="number">170</span>);   <span class="comment">//刻度起始点  </span></span><br><span class="line">     ctx.<span class="title function_">lineTo</span>(<span class="number">0</span>,-<span class="number">195</span>);    <span class="comment">//刻度结束点  </span></span><br><span class="line">     ctx.<span class="title function_">closePath</span>();  </span><br><span class="line">     ctx.<span class="title function_">stroke</span>();  </span><br><span class="line">     ctx.<span class="title function_">restore</span>();   <span class="comment">//将旋转后的图片返回原画布  </span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">60</span>;i++)&#123;  </span><br><span class="line">     ctx.<span class="title function_">save</span>();          <span class="comment">//保存当前状态  </span></span><br><span class="line">     ctx.<span class="property">lineWidth</span>=<span class="number">3</span>;   <span class="comment">//刻度粗细  </span></span><br><span class="line">     ctx.<span class="property">strokeStyle</span>=<span class="string">&quot;black&quot;</span>    <span class="comment">//刻度颜色  </span></span><br><span class="line">     ctx.<span class="title function_">translate</span>(<span class="number">250</span>,<span class="number">250</span>);   <span class="comment">//设置00点,以画布中心为00  </span></span><br><span class="line">     ctx.<span class="title function_">rotate</span>(i*<span class="number">6</span>*<span class="title class_">Math</span>.<span class="property">PI</span>/<span class="number">180</span>);    <span class="comment">//设置旋转角度 参数是弧度，角度 0--360 弧度角度*Math.PI/180  </span></span><br><span class="line">     ctx.<span class="title function_">beginPath</span>();  </span><br><span class="line">     ctx.<span class="title function_">moveTo</span>(<span class="number">0</span>,-<span class="number">186</span>);    <span class="comment">//起始点  </span></span><br><span class="line">     ctx.<span class="title function_">lineTo</span>(<span class="number">0</span>,-<span class="number">195</span>);    <span class="comment">//终点</span></span><br><span class="line">     ctx.<span class="title function_">closePath</span>();  </span><br><span class="line">     ctx.<span class="title function_">stroke</span>();  </span><br><span class="line">     ctx.<span class="title function_">restore</span>();    <span class="comment">//将旋转后的图片返回原画布  </span></span><br><span class="line"> &#125; </span><br></pre></td></tr></table></figure>
+<p>效果图<br><img src="/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/tu2.png"></p>
+<h2 id="画完之后我们就可以画时针，分针，秒针了"><a href="#画完之后我们就可以画时针，分针，秒针了" class="headerlink" title="画完之后我们就可以画时针，分针，秒针了."></a>画完之后我们就可以画时针，分针，秒针了.</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//表盘中兴的点</span></span><br><span class="line">    ctx.<span class="title function_">beginPath</span>();  </span><br><span class="line">    ctx.<span class="property">lineWidth</span>=<span class="number">1</span>;  </span><br><span class="line">    ctx.<span class="property">strokeStyle</span>=<span class="string">&quot;black&quot;</span>;  </span><br><span class="line">    ctx.<span class="property">fillStyle</span>=<span class="string">&quot;blue&quot;</span>;</span><br><span class="line">    <span class="comment">//路径函数 x,y,r,角度范围,顺时针/逆时针</span></span><br><span class="line">    ctx.<span class="title function_">arc</span>(<span class="number">250</span>,<span class="number">250</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">360</span>,<span class="literal">false</span>);  </span><br><span class="line">    ctx.<span class="title function_">fill</span>();  </span><br><span class="line">    ctx.<span class="title function_">stroke</span>();   </span><br><span class="line">    ctx.<span class="title function_">closePath</span>();    </span><br><span class="line"><span class="comment">//时针  </span></span><br><span class="line">     ctx.<span class="title function_">save</span>(); <span class="comment">//保存当前状态   </span></span><br><span class="line">     ctx.<span class="property">lineWidth</span>=<span class="number">6</span>;  </span><br><span class="line">     ctx.<span class="property">strokeStyle</span>=<span class="string">&quot;black&quot;</span>;  </span><br><span class="line">     <span class="comment">//设置异次元空间00点  </span></span><br><span class="line">     ctx.<span class="title function_">translate</span>(<span class="number">250</span>,<span class="number">250</span>);  </span><br><span class="line">     ctx.<span class="title function_">rotate</span>(hour*<span class="number">30</span>*<span class="title class_">Math</span>.<span class="property">PI</span>/<span class="number">180</span>);  <span class="comment">//设置旋转角度 参数是弧度，角度 0--360  弧度角度*Math.PI/180  </span></span><br><span class="line">     ctx.<span class="title function_">beginPath</span>();       </span><br><span class="line">     ctx.<span class="title function_">moveTo</span>(<span class="number">0</span>,-<span class="number">120</span>);  <span class="comment">//起始</span></span><br><span class="line">     ctx.<span class="title function_">lineTo</span>(<span class="number">0</span>,<span class="number">10</span>);    <span class="comment">//终点</span></span><br><span class="line">     ctx.<span class="title function_">closePath</span>();  </span><br><span class="line">     ctx.<span class="title function_">stroke</span>();  </span><br><span class="line">     ctx.<span class="title function_">restore</span>();  </span><br><span class="line"><span class="comment">//分针  </span></span><br><span class="line">     ctx.<span class="title function_">save</span>();  </span><br><span class="line">     ctx.<span class="property">lineWidth</span>=<span class="number">4</span>;  </span><br><span class="line">     ctx.<span class="property">strokeStyle</span>=<span class="string">&quot;green&quot;</span>;  </span><br><span class="line">     ctx.<span class="title function_">translate</span>(<span class="number">250</span>,<span class="number">250</span>);  </span><br><span class="line">     ctx.<span class="title function_">rotate</span>(minute*<span class="number">6</span>*<span class="title class_">Math</span>.<span class="property">PI</span>/<span class="number">180</span>);  </span><br><span class="line">     ctx.<span class="title function_">beginPath</span>();       </span><br><span class="line">     ctx.<span class="title function_">moveTo</span>(<span class="number">0</span>,-<span class="number">150</span>);  </span><br><span class="line">     ctx.<span class="title function_">lineTo</span>(<span class="number">0</span>,<span class="number">15</span>);  </span><br><span class="line">     ctx.<span class="title function_">closePath</span>();  </span><br><span class="line">     ctx.<span class="title function_">stroke</span>();  </span><br><span class="line">     ctx.<span class="title function_">restore</span>();  </span><br><span class="line"><span class="comment">//秒针</span></span><br><span class="line">     ctx.<span class="title function_">save</span>();  </span><br><span class="line">     ctx.<span class="property">lineWidth</span>=<span class="string">&quot;1.5&quot;</span>;  </span><br><span class="line">     ctx.<span class="property">strokeStyle</span>=<span class="string">&quot;red&quot;</span>;  </span><br><span class="line">     ctx.<span class="title function_">translate</span>(<span class="number">250</span>,<span class="number">250</span>);  </span><br><span class="line">     ctx.<span class="title function_">rotate</span>(second*<span class="number">6</span>*<span class="title class_">Math</span>.<span class="property">PI</span>/<span class="number">180</span>);  </span><br><span class="line">     ctx.<span class="title function_">beginPath</span>();       </span><br><span class="line">     ctx.<span class="title function_">moveTo</span>(<span class="number">0</span>,-<span class="number">160</span>);  </span><br><span class="line">     ctx.<span class="title function_">lineTo</span>(<span class="number">0</span>,<span class="number">20</span>);  </span><br><span class="line">     ctx.<span class="title function_">closePath</span>();  </span><br><span class="line">     ctx.<span class="title function_">stroke</span>();  </span><br><span class="line">     <span class="comment">//秒针前端小点  </span></span><br><span class="line">     ctx.<span class="title function_">beginPath</span>();  </span><br><span class="line">     <span class="comment">//外环为红色  </span></span><br><span class="line">     ctx.<span class="property">strokeStyle</span>=<span class="string">&quot;red&quot;</span>;  </span><br><span class="line">     <span class="comment">//灰色填充  </span></span><br><span class="line">     ctx.<span class="property">fillStyle</span>=<span class="string">&quot;black&quot;</span>;  </span><br><span class="line">     ctx.<span class="title function_">arc</span>(<span class="number">0</span>,-<span class="number">80</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">360</span>,<span class="literal">false</span>);  </span><br><span class="line">     ctx.<span class="title function_">fill</span>();  </span><br><span class="line">     ctx.<span class="title function_">closePath</span>();  </span><br><span class="line">     ctx.<span class="title function_">stroke</span>();  </span><br><span class="line">     ctx.<span class="title function_">restore</span>(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="通过系统时间的数值来判断直线的偏转度来构成时针，分针和秒针的偏转。"><a href="#通过系统时间的数值来判断直线的偏转度来构成时针，分针和秒针的偏转。" class="headerlink" title="通过系统时间的数值来判断直线的偏转度来构成时针，分针和秒针的偏转。"></a>通过系统时间的数值来判断直线的偏转度来构成时针，分针和秒针的偏转。</h2><p>效果图<br><img src="/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/tu3.png"></p>
+<p>之后只要不断的动态刷新drawClock()这个函数，就可以动态的显示时间了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">drawClock</span>();   <span class="comment">//调用函数</span></span><br><span class="line"><span class="built_in">setInterval</span>(drawClock,<span class="number">1000</span>); <span class="comment">//定时器，没1000毫秒刷新一次函数  </span></span><br></pre></td></tr></table></figure>
+<p>至此我们的动态时钟就完成了</p>
+<p>附上一个效果的地址</p>
+<p><a target="_blank" rel="noopener" href="http://121.42.140.206/%e6%97%b6%e9%92%9f/">传送门</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在web端，做一个动态的时钟还是不怎么难的，运用canvas之后只要熟记语法规则，基本都可以做出来的<br>有几个常用的canvas api的总结<br><code>beginPath()</code>开始绘制常常与<code>closePath()</code>一起用，用于开始和结束的标志<br><code>lineWidth</code>：线的宽度<br><code>strokeStyle()</code>线的颜色<br><code>arc(x,y,r,0,cot,方向)</code>绘制曲线<br><code>save()</code>保存上个的绘图环境<br><code>translate()</code>设置旋转角度，参数是弧度<br><code>fill()</code>填充颜色<br><code>restore()</code>旋转后返回画布<br>绘制一条线的<code>moveTo()</code>起点 和 <code>lineTo()</code>终点<br>大概一些常用的就这么多了吧</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/07/29/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/" data-id="cl70o66fh0006k8u959njhde2" data-title="canvas实现动态时钟" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/19/%E5%85%8D%E6%B5%81%E6%95%99%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          免流教程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/25/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">不會用git也沒關係，使用七牛云+hexo</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/%E7%BD%91%E7%BB%9C/">网络</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">python数据分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%BB%E5%8A%A1/" rel="tag">任务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E6%B5%81/" rel="tag">免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" rel="tag">技术分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" rel="tag">日记-记录生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E6%96%87/" rel="tag">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" rel="tag">生活杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A8%E7%99%BD/" rel="tag">表白</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" rel="tag">随想随记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">python数据分析</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">任务</a> <a href="/tags/%E5%85%8D%E6%B5%81/" style="font-size: 10px;">免流</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" style="font-size: 10px;">技术分享</a> <a href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" style="font-size: 13.33px;">日记-记录生活</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%9D%82%E6%96%87/" style="font-size: 10px;">杂文</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">生活杂谈</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%A1%A8%E7%99%BD/" style="font-size: 10px;">表白</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 10px;">随想</a> <a href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" style="font-size: 10px;">随想随记</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/16/%E5%B0%8F%E6%9D%8E%E6%98%AF%E4%B8%AA%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%BA/">小李是个什么样的人</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/%E5%A4%A7%E7%90%86/">大理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/freedom/">freedom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/22/%E8%87%AA%E5%B7%B1%E5%8A%A0%E6%B2%B9%E6%89%93%E6%B0%94%E5%93%88/">自己加油打气哈</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/01/%E6%97%A0%E9%A2%98/">无题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

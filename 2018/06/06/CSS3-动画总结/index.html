@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CSS3 动画总结 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="CSS3动画CSS3动画算是CSS3最重要的一个属性了，所以抽空学习复习了下，先介绍动画机制然后做个小demo 关于CSS3的动画有三种：变形(transform)、过渡(transition)和动画(animation)animation样例代码点这里 transition样例代码点这里 transform样例代码点这里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3 动画总结">
+<meta property="og:url" content="http://example.com/2018/06/06/CSS3-%E5%8A%A8%E7%94%BB%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="CSS3动画CSS3动画算是CSS3最重要的一个属性了，所以抽空学习复习了下，先介绍动画机制然后做个小demo 关于CSS3的动画有三种：变形(transform)、过渡(transition)和动画(animation)animation样例代码点这里 transition样例代码点这里 transform样例代码点这里">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/transform.png">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/transition2.gif">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/transition2.gif">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/transition5.gif">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/animation1.gif">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/animation2.gif">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/animation3.gif">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/animation4.gif">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/animation6.gif">
+<meta property="og:image" content="http://otjagab27.bkt.clouddn.com/animation7.gif">
+<meta property="article:published_time" content="2018-06-06T13:02:01.000Z">
+<meta property="article:modified_time" content="2018-06-11T08:55:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://otjagab27.bkt.clouddn.com/transform.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CSS3-动画总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/06/06/CSS3-%E5%8A%A8%E7%94%BB%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2018-06-06T13:02:01.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a>►<a class="article-category-link" href="/categories/%E6%80%BB%E7%BB%93/%E9%9D%A2%E8%AF%95/">面试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      CSS3 动画总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS3动画"><a href="#CSS3动画" class="headerlink" title="CSS3动画"></a>CSS3动画</h1><p>CSS3动画算是CSS3最重要的一个属性了，所以抽空学习复习了下，先介绍动画机制然后做个小demo</p>
+<h2 id="关于CSS3的动画有三种：变形-transform-、过渡-transition-和动画-animation"><a href="#关于CSS3的动画有三种：变形-transform-、过渡-transition-和动画-animation" class="headerlink" title="关于CSS3的动画有三种：变形(transform)、过渡(transition)和动画(animation)"></a>关于CSS3的动画有三种：变形(transform)、过渡(transition)和动画(animation)</h2><p><a target="_blank" rel="noopener" href="http://www.azhizhizhi.top/css3_animation.html">animation样例代码点这里 </a><br><a target="_blank" rel="noopener" href="http://www.azhizhizhi.top/css3_transition.html">transition样例代码点这里 </a><br><a target="_blank" rel="noopener" href="http://www.azhizhizhi.top/css3_transform.html">transform样例代码点这里 </a></p>
+<span id="more"></span>
+
+<h2 id="transform（变形）"><a href="#transform（变形）" class="headerlink" title="transform（变形）"></a>transform（变形）</h2><p>transform的各种属性</p>
+<blockquote>
+<p>.旋转rotate（以中心为原点）<br>.扭曲、倾斜skew（skew(x,y), skewX(x), skewY(y)）<br>. 缩放scale（scale(x,y), scaleX(x), scaleY(y)）<br>. 移动translate（translateX,translateY）<br>.矩阵变形matrix。</p>
+</blockquote>
+<p>各种写法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transform</span>:<span class="built_in">rotate</span>(<span class="number">10deg</span>);</span><br><span class="line"><span class="attribute">transform</span>:<span class="built_in">skew</span>(<span class="number">20deg</span>);</span><br><span class="line"><span class="attribute">transform</span>:<span class="built_in">scale</span>(<span class="number">1.5</span>)</span><br><span class="line">transform:<span class="built_in">translate</span>()</span><br></pre></td></tr></table></figure>
+<p>综合在一起就可以变成动态效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.demo</span>&#123;</span><br><span class="line">    -webkit-<span class="attribute">transition</span>:all <span class="number">1s</span> ease-in-out;-moz-<span class="attribute">transition</span>:all <span class="number">1s</span> ease-in-out</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.demo</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>:<span class="built_in">rotate</span>(<span class="number">360deg</span>) <span class="built_in">skew</span>(-<span class="number">20deg</span>) <span class="built_in">scale</span>(<span class="number">3.0</span>) <span class="built_in">translate</span>(<span class="number">100px</span>,<span class="number">0</span>);</span><br><span class="line">    -moz-<span class="attribute">transform</span>:<span class="built_in">rotate</span>(<span class="number">360deg</span>) <span class="built_in">skew</span>(-<span class="number">20deg</span>)<span class="built_in">scale</span>(<span class="number">3.0</span>) <span class="built_in">translate</span>(<span class="number">100px</span>,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/transform.png" alt="transform组合"></p>
+<h2 id="transition（过渡）"><a href="#transition（过渡）" class="headerlink" title="transition（过渡）"></a>transition（过渡）</h2><p>在CSS3引入过渡（transition）概念之前，css是没有时间轴的，也就是说，所有状态都是顺时完成。这就会造成很突兀的视觉效果，就像什么东西啪在脸上似的，各种过渡状态只能用js控制元素来实现，耗时又耗性能。<br>引入元素的过渡状态之后，元素变化就轻轻柔柔了，可以摆脱只能是js控制制作动画的那段历史</p>
+<h3 id="语法：transition"><a href="#语法：transition" class="headerlink" title="语法：transition"></a>语法：transition</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">background</span>:red</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">450px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">450px</span>;</span><br><span class="line">    <span class="attribute">background</span>:black</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/transition2.gif" alt="transition1"><br>可以在电脑上敲一下看看效果是怎样的<br><br>transition： 1s表示了从15px-&gt;450px，0到1，总共用了1秒<br><br>transition 语法中可能指定多个属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span> height, <span class="number">1s</span> width;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/transition2.gif" alt="此处输入图片的描述"><br>height和width都是同时执行的，之间没有差别，如果需要先变宽再变高，可以指定变化状态<br></p>
+<h3 id="transition-delay-延期"><a href="#transition-delay-延期" class="headerlink" title="transition-delay(延期)"></a><code>transition-delay(延期)</code></h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>:<span class="number">1s</span> width ,<span class="number">1s</span> <span class="number">1s</span> height </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/transition5.gif" alt="先变高在变宽"><br>这样在width变完之后height才开始变化，延迟（delay）1秒<br><br>delay意义就在于了可以指定动画的发生顺序，使得多个不同的transition可以连在一起，形成比较复杂的效果</p>
+<h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a><code>transition-timing-function</code></h3><p>transition的状态速度变化，默认的状态是：<code>逐渐放慢</code>，叫做<code>ease</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span> ease;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>除了ease以外，其他模式还包括</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span> linear;</span><br><span class="line">    <span class="comment">/*匀速*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span> ease-in;</span><br><span class="line">    <span class="comment">/*加速*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span> ease-out;</span><br><span class="line">    <span class="comment">/*减速*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span> height <span class="built_in">cubic-bezier</span>(.<span class="number">83</span>,.<span class="number">97</span>,.<span class="number">05</span>,<span class="number">1.44</span>);</span><br><span class="line">    <span class="comment">/*自定义速度*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>贴一个计算自定义速度的网站,,,,<a target="_blank" rel="noopener" href="http://cubic-bezier.com/">这里这里，点我</a></p>
+<h3 id="总结下transition各种属性"><a href="#总结下transition各种属性" class="headerlink" title="总结下transition各种属性"></a>总结下transition各种属性</h3><p>简写，写法如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>:<span class="number">1s</span> <span class="number">1s</span> height ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>实际写法</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div</span>&#123;</span><br><span class="line">    <span class="attribute">transition-property</span>:height;</span><br><span class="line">    <span class="attribute">transition-duration</span>:<span class="number">1s</span>;</span><br><span class="line">    <span class="attribute">transition-delay</span>:<span class="number">1s</span>;</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: ease;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="transition使用说明"><a href="#transition使用说明" class="headerlink" title="transition使用说明"></a>transition使用说明<br></h4><blockquote>
+<p>.目前各大浏览器都已经支持了无前缀transition的写法，可以大胆的用。</p>
+</blockquote>
+<blockquote>
+<p>.不是所有CSS属性都支持transition，完整的列表看<a target="_blank" rel="noopener" href="http://oli.jp/2010/css-animatable-properties/">这里</a>，效果在<a target="_blank" rel="noopener" href="http://leaverou.github.io/animatable/">这里</a></p>
+</blockquote>
+<blockquote>
+<p>.transition需要知道明确的开始状态和结束状态，不知道中间状态，也就是说，只有起点和终点，就像width从0到100px，起点和终点</p>
+</blockquote>
+<h4 id="transition的局限"><a href="#transition的局限" class="headerlink" title="transition的局限"></a>transition的局限</h4><p>transition应用简单，容易上手，但是:</p>
+<blockquote>
+<p>.需要用到时间来触发，如hover,click,mouseover</p>
+</blockquote>
+<blockquote>
+<p>.transition是一次性的，触发一次就结束，除非再次进行触发</p>
+</blockquote>
+<blockquote>
+<p>.transition只有开始和结束状态，没有中间态</p>
+</blockquote>
+<blockquote>
+<p>.一条transition只能定义一个属性，不能涉及多个属性</p>
+</blockquote>
+<h2 id="animation（动画）"><a href="#animation（动画）" class="headerlink" title="animation（动画）"></a>animation（动画）</h2><p>animation 就是为了解决transition的局限性问题而提出的<br>语法，可以指定持续周期(开始，中间，结束)，以及动画效果名称</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-class">.hover</span>&#123;</span><br><span class="line">    <span class="attribute">animation</span>:<span class="number">1s</span> rainbow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/animation1.gif" alt="1"><br>上述代码是当鼠标悬停在div上时，产生rainbow的动画效果，持续时间为1秒，为此给出了个keyframes关键字，定义rainbow效果。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> rainbow &#123;</span><br><span class="line">  <span class="number">0%</span> &#123; <span class="attribute">background</span>: <span class="number">#c00</span>; &#125;</span><br><span class="line">  <span class="number">50%</span> &#123; <span class="attribute">background</span>: orange; &#125;</span><br><span class="line">  <span class="number">100%</span> &#123; <span class="attribute">background</span>: yellowgreen; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码中我们给rainbow给了三个状态，分别是起始（0%），中间（50%），结束（100%），如果需要其他也可以进行插入更多的状态。<br><br><br>一般状态下，动画只播放一次，加入<code>infnite(无限)</code>关键字，可以让动画无限次播放。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: <span class="number">1s</span> rainbow infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/animation2.gif" alt="2"><br>也可以指定动画具体播放次数</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: <span class="number">1s</span> rainbow <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/animation3.gif" alt="3"></p>
+<h3 id="animation-fill-mode-动画填充模式"><a href="#animation-fill-mode-动画填充模式" class="headerlink" title="animation-fill-mode(动画填充模式)"></a>animation-fill-mode(动画填充模式)</h3><p>动画结束后，会立即从结束状态跳回到起始状态，如果想让动画保持在结束状态，需要使用animation-fill-mode属性中的forwards。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-class">.hover</span>&#123;</span><br><span class="line">    <span class="attribute">animation</span>:<span class="number">1s</span> rainbow forwards</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/animation4.gif" alt="4"><br>animation-fill-mode还有下列的值</p>
+<blockquote>
+<p>. none:默认值，回到动画没开始的状态。</p>
+</blockquote>
+<blockquote>
+<p>. backwards:让动画回到第一帧的状态，</p>
+</blockquote>
+<blockquote>
+<p>. both:根据animation-direction（见后）轮流应用forwards和backwards规则</p>
+</blockquote>
+<h4 id="animation-direction"><a href="#animation-direction" class="headerlink" title="animation-direction"></a>animation-direction</h4><p>动画循环播放时，每次都是从起始到结束，在播放，但是，有了这个animation-direction属性，就可以自己定义类似行为，<br>列子</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> rainbow &#123;</span><br><span class="line">  <span class="number">0%</span> &#123; <span class="attribute">background-color</span>: yellow; &#125;</span><br><span class="line">  <span class="number">100%</span> &#123; <span class="attribute">background</span>: blue; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: <span class="number">1s</span> rainbow <span class="number">3</span> normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此外，还可以等于取alternate、reverse、alternate-reverse等值。它们的含义见下图（假定动画连续播放三次）。<br><a href=""></a><br>各个浏览器对除了normal和reverse以外的值兼容不加，慎用</p>
+<h3 id="animation的各项属性"><a href="#animation的各项属性" class="headerlink" title="animation的各项属性"></a>animation的各项属性</h3><p>animation 简写形式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">animation</span>:<span class="number">1s</span> <span class="number">1s</span> rainbow linear <span class="number">3</span> forwards normal</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原本形式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation-name</span>: rainbow;</span><br><span class="line">  <span class="attribute">animation-duration</span>: <span class="number">1s</span>;</span><br><span class="line">  <span class="attribute">animation-timing-function</span>: linear;</span><br><span class="line">  <span class="attribute">animation-delay</span>: <span class="number">1s</span>;</span><br><span class="line">  <span class="attribute">animation-fill-mode</span>:forwards;</span><br><span class="line">  <span class="attribute">animation-direction</span>: normal;</span><br><span class="line">  <span class="attribute">animation-iteration-count</span>: <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="keyframes的写法"><a href="#keyframes的写法" class="headerlink" title="keyframes的写法"></a>keyframes的写法</h3><p>keyframes关键字来定义动画的各个状态，写法挺自由</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> rainbow&#123;</span><br><span class="line">    <span class="number">0%</span>&#123;<span class="attribute">background</span>:<span class="number">#c00</span>&#125;</span><br><span class="line">    <span class="number">50%</span>&#123;<span class="attribute">background</span>:orange&#125;</span><br><span class="line">    <span class="number">100%</span>&#123;<span class="attribute">background</span>:yellow&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等于下列的形式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> rainbow &#123;</span><br><span class="line">  <span class="selector-tag">from</span> &#123; <span class="attribute">background</span>: <span class="number">#c00</span> &#125;</span><br><span class="line">  <span class="number">50%</span> &#123; <span class="attribute">background</span>: orange &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123; <span class="attribute">background</span>: yellowgreen &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果省略某个状态，浏览器会自动推算中间状态，所以下面都是合法的写法。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> rainbow &#123;</span><br><span class="line">  <span class="number">50%</span> &#123; <span class="attribute">background</span>: orange &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123; <span class="attribute">background</span>: yellowgreen &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@keyframes</span> rainbow &#123;</span><br><span class="line">  <span class="selector-tag">to</span> &#123; <span class="attribute">background</span>: yellowgreen &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>甚至，可以把多个状态写在一行。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> pound &#123;</span><br><span class="line">  <span class="selector-tag">from</span>，<span class="selector-tag">to</span> &#123; <span class="attribute">transform</span>: none; &#125;</span><br><span class="line">  <span class="number">50%</span> &#123; <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.2</span>); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外一点需要注意的是，浏览器从一个状态向另一个状态过渡，是平滑过渡。steps函数可以实现分步过渡。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: <span class="number">1s</span> rainbow infinite <span class="built_in">steps</span>(<span class="number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/animation6.gif" alt="9"></p>
+<h3 id="animation-play-state"><a href="#animation-play-state" class="headerlink" title="animation-play-state"></a>animation-play-state</h3><p>转起来，<code>transform:rotate(1turn)</code><br><br><code>animation-play-state:paused</code>暂停状态</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">animation</span>: spin <span class="number">1s</span> linear infinite;</span><br><span class="line">    <span class="attribute">animation-play-state</span>: paused;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation-play-state</span>: running;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> spin &#123;</span><br><span class="line">    <span class="selector-tag">to</span> &#123;</span><br><span class="line">        <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">1turn</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://otjagab27.bkt.clouddn.com/animation7.gif" alt="此处输入图片的描述"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="如有什么不对的地方，欢迎大家指正"><a href="#如有什么不对的地方，欢迎大家指正" class="headerlink" title="如有什么不对的地方，欢迎大家指正"></a>如有什么不对的地方，欢迎大家指正</h4><p>css3动画大致就总结完了，很多参考了阮一峰大神的博客。不懂的地方其实还是挺多，css是需要大量练习才能有所突破的，以本篇的了解至少保证在面试的时候能回答出来面试官的问题吧<br>下一篇总结下各自的区别</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/06/06/CSS3-%E5%8A%A8%E7%94%BB%E6%80%BB%E7%BB%93/" data-id="cl70o66ff0003k8u9391k57kk" data-title="CSS3 动画总结" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/10/HTTP-%E4%B8%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HTTP(一)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/08/python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94SCUEC%E5%85%A5%E5%AD%A6%E9%A2%84%E8%AD%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python机器学习——SCUEC入学预警</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/%E7%BD%91%E7%BB%9C/">网络</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">python数据分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%BB%E5%8A%A1/" rel="tag">任务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E6%B5%81/" rel="tag">免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" rel="tag">技术分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" rel="tag">日记-记录生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E6%96%87/" rel="tag">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" rel="tag">生活杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A8%E7%99%BD/" rel="tag">表白</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" rel="tag">随想随记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">python数据分析</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">任务</a> <a href="/tags/%E5%85%8D%E6%B5%81/" style="font-size: 10px;">免流</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" style="font-size: 10px;">技术分享</a> <a href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" style="font-size: 13.33px;">日记-记录生活</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%9D%82%E6%96%87/" style="font-size: 10px;">杂文</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">生活杂谈</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%A1%A8%E7%99%BD/" style="font-size: 10px;">表白</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 10px;">随想</a> <a href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" style="font-size: 10px;">随想随记</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/16/%E5%B0%8F%E6%9D%8E%E6%98%AF%E4%B8%AA%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%BA/">小李是个什么样的人</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/%E5%A4%A7%E7%90%86/">大理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/freedom/">freedom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/22/%E8%87%AA%E5%B7%B1%E5%8A%A0%E6%B2%B9%E6%89%93%E6%B0%94%E5%93%88/">自己加油打气哈</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/01/%E6%97%A0%E9%A2%98/">无题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

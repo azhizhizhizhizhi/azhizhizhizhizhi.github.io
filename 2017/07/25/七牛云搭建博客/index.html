@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>不會用git也沒關係，使用七牛云+hexo | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="利用七牛云提供的免费空间部署 hexo 博客。因为很多同学不会用github来着，所以就用国内的空间提供商七牛来搭建hexo博客———部分内容转载于实验楼一点自己的体会理解 hexo  hexo 是一个快速、简洁且高效的博客框架。hexo 使用  Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。   静态内容本身由一些文件组成，并不需要动态的读写数据库。因此将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不會用git也沒關係，使用七牛云+hexo">
+<meta property="og:url" content="http://example.com/2017/07/25/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="利用七牛云提供的免费空间部署 hexo 博客。因为很多同学不会用github来着，所以就用国内的空间提供商七牛来搭建hexo博客———部分内容转载于实验楼一点自己的体会理解 hexo  hexo 是一个快速、简洁且高效的博客框架。hexo 使用  Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。   静态内容本身由一些文件组成，并不需要动态的读写数据库。因此将">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/qiniu1.png">
+<meta property="og:image" content="http://example.com/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/qiniu2.png">
+<meta property="og:image" content="http://example.com/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/qiniu3.png">
+<meta property="og:image" content="http://example.com/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/qiniu4.png">
+<meta property="article:published_time" content="2017-07-25T04:57:40.000Z">
+<meta property="article:modified_time" content="2017-07-25T06:21:30.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/qiniu1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-七牛云搭建博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/07/25/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2017-07-25T04:57:40.000Z" itemprop="datePublished">2017-07-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      不會用git也沒關係，使用七牛云+hexo
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="利用七牛云提供的免费空间部署-hexo-博客。"><a href="#利用七牛云提供的免费空间部署-hexo-博客。" class="headerlink" title="利用七牛云提供的免费空间部署 hexo 博客。"></a>利用七牛云提供的免费空间部署 hexo 博客。</h1><p>因为很多同学不会用github来着，所以就用国内的空间提供商七牛来搭建hexo博客<br>———部分内容转载于<a target="_blank" rel="noopener" href="https://www.shiyanlou.com/">实验楼</a><br>一点自己的体会理解</p>
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><blockquote>
+<ul>
+<li><code>hexo</code> 是一个快速、简洁且高效的博客框架。<code>hexo</code> 使用  <code>Markdown</code>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</li>
+</ul>
+</blockquote>
+<p>静态内容本身由一些文件组成，并不需要动态的读写数据库。因此将它存储在云端，是非常好的选择。</p>
+<h2 id="七牛云"><a href="#七牛云" class="headerlink" title="七牛云"></a>七牛云</h2><p>七牛云存储提供免费的存储空间 10GB，每月下载流量 10GB，每月 PUT&#x2F;DELETE 10 万次请求，每月 GET 100 万次请求。</p>
+<span id="more"></span>
+<p>另外，七牛在国内以及海外有多个 CDN，将博客部署到七牛的好处是显而易见的。由于国内环境，七牛自定义域名需要已备案域名才能使用。现在七牛的空间已经取消了二级域名，给出的是五级域名。如果你有已备案域名，那么部署到七牛是个极好的选择，或者你不介意五级域名的话也可以。</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p><code>node.js</code> 的编译安装<br><code>hexo</code> 的配置<br><code>markdown</code> 语法</p>
+<h1 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h1><h2 id="可以翻翻以前博客，有提到过的-node-js的安装-hexo的安装"><a href="#可以翻翻以前博客，有提到过的-node-js的安装-hexo的安装" class="headerlink" title="可以翻翻以前博客，有提到过的 node.js的安装 hexo的安装"></a>可以翻翻以前博客，有提到过的 node.js的安装 hexo的安装</h2><h2 id="再有就是qrbox的安装"><a href="#再有就是qrbox的安装" class="headerlink" title="再有就是qrbox的安装"></a>再有就是qrbox的安装</h2><h2 id="七牛云账户：需要在个人中心获取-AccessKey-和-SecretKey。"><a href="#七牛云账户：需要在个人中心获取-AccessKey-和-SecretKey。" class="headerlink" title="七牛云账户：需要在个人中心获取 AccessKey 和 SecretKey。"></a>七牛云账户：需要在个人中心获取 <code>AccessKey</code> 和 <code>SecretKey</code>。</h2><h2 id="备案过的域名（可选）"><a href="#备案过的域名（可选）" class="headerlink" title="备案过的域名（可选）"></a>备案过的域名（可选）</h2><h2 id="七牛云平台余额有10元（可选）"><a href="#七牛云平台余额有10元（可选）" class="headerlink" title="七牛云平台余额有10元（可选）"></a>七牛云平台余额有10元（可选）</h2><h1 id="安装操作（就复杂点的吧）"><a href="#安装操作（就复杂点的吧）" class="headerlink" title="安装操作（就复杂点的吧）"></a>安装操作（就复杂点的吧）</h1><h2 id="创建一个blog文件夹用来放置-hexo"><a href="#创建一个blog文件夹用来放置-hexo" class="headerlink" title="创建一个blog文件夹用来放置 hexo"></a>创建一个blog文件夹用来放置 hexo</h2><p>在blog里面启用gitbash(上一篇环境搭建里面说过关于git的安装和使用)</p>
+<h2 id="3-2-下载node-js"><a href="#3-2-下载node-js" class="headerlink" title="3.2 下载node.js"></a>3.2 下载node.js</h2><p>直接从官网下载 <code>node.js</code>:<a target="_blank" rel="noopener" href="https://nodejs.org/en/">node下载</a>安装好之后检查<br>键盘上操作<code>win+R</code>输入cmd，在控制台模式下输入node -v查看版本号</p>
+<h2 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 <code>hexo</code></h2><p>在blog目录下鼠标右键进入git bash命令行模式 输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>如果网络不好的话，可能要等待很久。<br>执行命令初始化 hexo 博客</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+
+<p>安装一下 npm 依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install</span><br></pre></td></tr></table></figure>
+
+<p>生成静态文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g </span><br></pre></td></tr></table></figure>
+
+<p>本地预览</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以在本地的浏览器地址栏输入 localhost:4000 来查看啦啦啦啦啦</p>
+<h1 id="使用七牛云平台"><a href="#使用七牛云平台" class="headerlink" title="使用七牛云平台"></a>使用七牛云平台</h1><h2 id="在七牛云官网（http-www-qiniu-com-）注册一个账户。"><a href="#在七牛云官网（http-www-qiniu-com-）注册一个账户。" class="headerlink" title="在七牛云官网（http://www.qiniu.com/）注册一个账户。"></a>在七牛云官网（<a target="_blank" rel="noopener" href="http://www.qiniu.com/%EF%BC%89%E6%B3%A8%E5%86%8C%E4%B8%80%E4%B8%AA%E8%B4%A6%E6%88%B7%E3%80%82">http://www.qiniu.com/）注册一个账户。</a></h2><p>然后在个人中心，创建一个空间用于存放 hexo 博客的静态文件。</p>
+<p><img src="/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/qiniu1.png"><br><img src="/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/qiniu2.png"><br>然后在个人面板-&gt;密钥管理，获取AccessKey 和 SecretKey。</p>
+<h2 id="安装qrsbox"><a href="#安装qrsbox" class="headerlink" title="安装qrsbox"></a>安装<code>qrsbox</code></h2><p>从七牛官方下载 <code>qrsbox</code> 软件：<code>http://developer.qiniu.com/code/v6/tool/qrsbox.html</code>。</p>
+<p>配置 <code>qrsbox</code>:</p>
+<p>下载 <code>qrsbox</code> 命令行工具后，对获得的可执行 <code>.bin</code> 文件重命名为 <code>qrsboxcli</code>：</p>
+<p>之后在该目录下右键打开 gitbash 终端，执行以下命令进行初始化：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./qrsboxcli init &lt;AccessKey&gt; &lt;SecretKey&gt; &lt;SyncDir&gt; &lt;Bucket&gt; [&lt;KeyPrefix&gt;]</span><br></pre></td></tr></table></figure>
+<p>此时如果 <code>qrsboxcli</code> 无法执行，可以使用 <code>$ sudo chmod +x qrsboxcli</code> 命令，赋予执行权限。</p>
+<blockquote>
+<ul>
+<li>参数名称 	说明</li>
+<li>SyncDir 	本地的同步目录，该目录下的文件会随时同步上传至七牛云存储</li>
+<li>Bucket 	保存同步文件的资源空间名</li>
+<li>KeyPrefix 	文件前缀，可选。如果设置了该参数，那么上传的文件名前都会加上前缀。这个前缀主要用于在空间</li>
+<li>中区分不同上传来源的文件</li>
+</ul>
+</blockquote>
+<p>例如，此时的本地同步目录就是之前我们创建的 <code>/blog/public/</code>。<br>最后，用户可以使用以下命令开始文件同步：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./qrsboxcli sync &amp;</span><br></pre></td></tr></table></figure>
+<p>这里使用了 &amp; 符号，让同步客户端进程运行在后台。如果退出终端后程序中断，请使用以下命令代替：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nohup ./qrsboxcli sync &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+<p>用户可以通过以下命令查看同步过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./qrsboxcli log</span><br></pre></td></tr></table></figure>
+
+<p>如果需要停止后台运行的 qrsboxcli，可以使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./qrsboxcli stop</span><br></pre></td></tr></table></figure>
+<p>如果希望改变同步目录、bucket 等运行参数，需要先用 stop 命令停止 qrsboxcli 的后台程序，重新用新的参数运行初始化命令，然后再次启动同步程序，qrsboxcli 会立刻按新的配置将新目录的文件同步至七牛云存储。<br>注意 ：一定要记得在七牛云-&gt;个人中心-&gt;空间设置里面把默认首页设置开启：</p>
+<p><img src="/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/qiniu3.png"><br><img src="/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/qiniu4.png"></p>
+<h1 id="配置-hexo"><a href="#配置-hexo" class="headerlink" title="配置 hexo"></a>配置 <code>hexo</code></h1><h2 id="hexo-目录"><a href="#hexo-目录" class="headerlink" title="hexo 目录"></a>hexo 目录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── _config.yml   //网站的 配置 信息，您可以在此配置大部分的参数。</span><br><span class="line">|—— public       //生成的静态文件</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds    //模版 文件夹。当您新建文章时，hexo 会根据 scaffold 来建立文件。</span><br><span class="line">├── source       //资源文件夹是存放用户资源的地方。</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes       //主题 文件夹，hexo 会根据主题来生成静态页面</span><br></pre></td></tr></table></figure>
+<p>编辑 _config.yml:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"># Hexo Configuration</span><br><span class="line">## Docs: http://hexo.io/docs/configuration.html</span><br><span class="line">## Source: https://github.com/hexojs/hexo/</span><br><span class="line"># Site </span><br><span class="line">title: HEXO #站点名，站点左上角</span><br><span class="line">subtitle: 一个博客。 #副标题，站点左上角</span><br><span class="line">description: hexo #给搜索引擎看的，对站点的描述，可以自定义</span><br><span class="line">author: shiyanlolu #默认在站点左下角可以看到</span><br><span class="line">email: shiyanlou@qq.com #邮箱</span><br><span class="line">language: zh-Hans #语言包设置。</span><br><span class="line"></span><br><span class="line"># URL #访问地址等信息设置，可根据需要自己修改。</span><br><span class="line">## If your site is put in a subdirectory, set url as &#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span><br><span class="line">url: http:/shiyanlou.com #访问域名，可以修改为你的七牛云空间域名</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/ #具体内容页的存储路径结构</span><br><span class="line">tag_dir: tags #标签目录名</span><br><span class="line">archive_dir: archives #归档目录名</span><br><span class="line">category_dir: categories #分类目录名</span><br><span class="line"># Directory #默认文章和生成目录设置</span><br><span class="line">source_dir: source</span><br><span class="line">public_dir: public</span><br><span class="line"># Writing 文章布局、写作格式的定义</span><br><span class="line">new_post_name: :title.md # File name of new posts</span><br><span class="line">default_layout: post</span><br><span class="line">auto_spacing: false # Add spaces between asian characters and western characters</span><br><span class="line">titlecase: false # Transform title into titlecase</span><br><span class="line">max_open_file: 100</span><br><span class="line">filename_case: 0</span><br><span class="line">highlight:</span><br><span class="line">  enable: true</span><br><span class="line">  backtick_code_block: true</span><br><span class="line">  line_number: true</span><br><span class="line">  tab_replace:</span><br><span class="line"># Category &amp; Tag 分类和标签设置</span><br><span class="line">default_category: uncategorized</span><br><span class="line">category_map:</span><br><span class="line">tag_map:</span><br><span class="line"># Date / Time format 日期格式</span><br><span class="line">## Hexo uses Moment.js to parse and display date</span><br><span class="line">## You can customize the date format as defined in</span><br><span class="line">## http://momentjs.com/docs/#/displaying/format/</span><br><span class="line">date_format: MMM D YYYY</span><br><span class="line">time_format: H:mm:ss</span><br><span class="line"># Pagination 每页显示文章数，可以自定义</span><br><span class="line">## Set per_page to 0 to disable pagination</span><br><span class="line">per_page: 5</span><br><span class="line">pagination_dir: page</span><br><span class="line"></span><br><span class="line"># Extensions 这里配置站点所用主题和插件</span><br><span class="line">## Plugins: https://github.com/hexojs/hexo/wiki/Plugins</span><br><span class="line">## Themes: https://github.com/hexojs/hexo/wiki/Themes</span><br><span class="line">theme: landscape</span><br></pre></td></tr></table></figure>
+
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;我的博客&quot; == hexo new &quot;我的博客&quot; #新建文章</span><br><span class="line">hexo g == hexo generate  #生成博客</span><br><span class="line">hexo s == hexo server    #启动服务预览</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>hexo n &quot;blog name&quot;</code> 命令创建一篇文章后，使用 <code>hexo g</code> 命令生成静态文件到 <code>public</code> 目录下，之前配置好的 <code>qrsbox</code> 会自动把新的文件上传到七牛云的空间。</p>
+<h2 id="Next-主题"><a href="#Next-主题" class="headerlink" title="Next 主题"></a>Next 主题</h2><p>使用 Next 主题让站点更酷炫，Next 是一款简约而不简单的 hexo 主题，功能特性多样；响应式设计，电脑手机访问体验好。</p>
+<blockquote>
+<ul>
+<li>使用</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd shiyanlou_hexo</span><br><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>开启</li>
+</ul>
+</blockquote>
+<p>需要修改 <code>/shiyanlou_hexo/_config.yml</code> 配置项 <code>theme</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: http://hexo.io/plugins/</span><br><span class="line">## Themes: http://hexo.io/themes/</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/">Next 官网</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>主要是如何在七牛云上部署<code>hexo</code>博客，主要就是一些配置工作，可以在博客里面写写生活的感悟，也是也是不错的选择。寻找一个良好的markdown对博客的书写也是有着很大的帮助。祝大家学习生活愉快。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/07/25/%E4%B8%83%E7%89%9B%E4%BA%91%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="cl70o66fr0010k8u961tgegsz" data-title="不會用git也沒關係，使用七牛云+hexo" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/29/canvas%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%97%B6%E9%92%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          canvas实现动态时钟
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/24/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E9%AA%9A%E8%AF%9D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">echo &#34;like&#34;</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/%E9%9D%A2%E8%AF%95/">面试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/%E7%BD%91%E7%BB%9C/">网络</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">python数据分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%BB%E5%8A%A1/" rel="tag">任务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E6%B5%81/" rel="tag">免流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" rel="tag">技术分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" rel="tag">日记-记录生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E6%96%87/" rel="tag">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" rel="tag">生活杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A8%E7%99%BD/" rel="tag">表白</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" rel="tag">随想随记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">python数据分析</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">任务</a> <a href="/tags/%E5%85%8D%E6%B5%81/" style="font-size: 10px;">免流</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 13.33px;">博客</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" style="font-size: 10px;">技术分享</a> <a href="/tags/%E6%97%A5%E8%AE%B0-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/" style="font-size: 13.33px;">日记-记录生活</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%9D%82%E6%96%87/" style="font-size: 10px;">杂文</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" style="font-size: 16.67px;">生活杂谈</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%A1%A8%E7%99%BD/" style="font-size: 10px;">表白</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 10px;">随想</a> <a href="/tags/%E9%9A%8F%E6%83%B3%E9%9A%8F%E8%AE%B0/" style="font-size: 10px;">随想随记</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/16/%E5%B0%8F%E6%9D%8E%E6%98%AF%E4%B8%AA%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%BA/">小李是个什么样的人</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/%E5%A4%A7%E7%90%86/">大理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/freedom/">freedom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/22/%E8%87%AA%E5%B7%B1%E5%8A%A0%E6%B2%B9%E6%89%93%E6%B0%94%E5%93%88/">自己加油打气哈</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/01/%E6%97%A0%E9%A2%98/">无题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
